@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import classNames from 'classnames/bind';
-import Layers from '../layers/Layers';
-import styles from './Sidebar.module.scss';
+import styles from './Layers.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Sidebar = () => {
-  const [width, setWidth] = useState(230);
+const Layers = () => {
+  const [height, setHeight] = useState('40%');
 
   /**
-   * Modifies the sidebar width as the mouse moves.
+   * Modifies the layers height as the mouse moves.
    * @param {event} event - The mouse move event.
    */
   const handleMouseMove = (event) => {
-    const { clientX } = event;
+    const { clientY } = event;
 
-    setWidth(clientX);
+    setHeight(`${window.innerHeight - clientY}px`);
   };
 
   /**
@@ -31,7 +30,7 @@ const Sidebar = () => {
   };
 
   /**
-   * Initializes listeners for resizing the sidebar.
+   * Initializes listeners for resizing the layers.
    * @param {event} event - The mouse down event.
    */
   const handleMouseDown = (event) => {
@@ -40,9 +39,7 @@ const Sidebar = () => {
       return;
     }
 
-    // Persists the horizontal resize cursor for the duration of the action.
-    // Without this the cursor will default back to a pointer during a resize action.
-    document.documentElement.style.cursor = 'ew-resize';
+    document.documentElement.style.cursor = 'ns-resize';
 
     // Disable user selection and pointer events to prevent interference during resizing.
     document.body.className += cx('inactive');
@@ -52,15 +49,14 @@ const Sidebar = () => {
   };
 
   return (
-  // eslint-disable-next-line react/forbid-dom-props
-    <div className={cx('sidebar')} style={{ width: `${width}px` }}>
-      <div className={cx('components')}>
-        Components
+    // eslint-disable-next-line react/forbid-dom-props
+    <div className={cx('layers')} style={{ height }}>
+      <div className={cx('header')} onMouseDown={handleMouseDown} role="presentation">
+        <div className={cx('resizer')} />
+        Layers
       </div>
-      <Layers />
-      <div className={cx('resizer')} onMouseDown={handleMouseDown} role="presentation" />
     </div>
   );
 };
 
-export default Sidebar;
+export default Layers;

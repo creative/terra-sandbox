@@ -1,0 +1,22 @@
+:local {
+  .layers {
+    min-height: 36px;
+  }
+
+  .header {
+    cursor: ns-resize;
+    position: relative;
+  }
+
+  .resizer {
+    height: 10px;
+    margin-top: -7px;
+    position: absolute;
+    width: 100%;
+  }
+
+  .inactive {
+    pointer-events: none;
+    user-select: none;
+  }
+}

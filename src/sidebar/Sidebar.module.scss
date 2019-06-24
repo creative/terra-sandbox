@@ -15,19 +15,15 @@
   .components {
     border-bottom: 3px dashed #787575; // Temporary border to demo layout. TODO: Remove.
     display: flex;
-    flex-basis: 60%;
-  }
-
-  .layers {
-    display: flex;
     flex-grow: 1;
     flex-shrink: 1;
+    min-height: 36px;
   }
 
   .resizer {
     cursor: ew-resize;
     height: 100%;
-    margin-right: -8px;
+    margin-right: -7px;
     position: absolute;
     right: 0;
     width: 10px;
