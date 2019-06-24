@@ -14,6 +14,8 @@
   },
   "homepage": "https://github.com/devious-design/terra-sandbox#readme",
   "dependencies": {
+    "classnames": "^2.2.6",
+    "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1"
