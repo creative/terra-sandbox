@@ -2,10 +2,7 @@
   "name": "terra-sandbox",
   "version": "0.0.0",
   "description": "A devious side project",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/devious-design/terra-sandbox.git"
@@ -15,5 +12,31 @@
   "bugs": {
     "url": "https://github.com/devious-design/terra-sandbox/issues"
   },
-  "homepage": "https://github.com/devious-design/terra-sandbox#readme"
+  "homepage": "https://github.com/devious-design/terra-sandbox#readme",
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
