@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames/bind';
+import Sidebar from '../sidebar/Sidebar';
 import styles from './Sandbox.module.scss';
 
 const cx = classNames.bind(styles);
@@ -10,14 +11,12 @@ const Sandbox = () => (
       Header
     </div>
     <div className={cx('layout')}>
-      <div className={cx('sidebar')}>
-      Sidebar
-      </div>
+      <Sidebar />
       <div className={cx('workspace')}>
-      Workspace
+        Workspace
       </div>
       <div className={cx('editor')}>
-      Editor
+        Editor
       </div>
     </div>
   </div>
