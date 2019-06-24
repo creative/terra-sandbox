@@ -1,0 +1,19 @@
+{
+  "name": "terra-sandbox",
+  "version": "0.0.0",
+  "description": "A devious side project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devious-design/terra-sandbox.git"
+  },
+  "author": "Stephen Esser",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devious-design/terra-sandbox/issues"
+  },
+  "homepage": "https://github.com/devious-design/terra-sandbox#readme"
+}
