@@ -1,0 +1,37 @@
+:local {
+  .sandbox {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .header {
+    border: 3px dashed #787575; // Temporary border to demo layout. TODO: Remove.
+  }
+
+  .layout {
+    display: flex;
+    height: 100%;
+  }
+
+  .sidebar {
+    border: 3px dashed #787575; // Temporary border to demo layout. TODO: Remove.
+    display: flex;
+    flex: 0 0 230px;
+    height: 100%;
+  }
+
+  .workspace {
+    border: 3px dashed #787575; // Temporary border to demo layout. TODO: Remove.
+    display: flex;
+    flex: auto;
+    height: 100%;
+  }
+
+  .editor {
+    border: 3px dashed #787575; // Temporary border to demo layout. TODO: Remove.
+    display: flex;
+    flex: 0 0 230px;
+    height: 100%;
+  }
+}

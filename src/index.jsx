@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import Sandbox from './sandbox/Sandbox';
+import './index.module.scss';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Sandbox />, document.getElementById('root'));
