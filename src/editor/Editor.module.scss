@@ -1,16 +1,9 @@
 :local {
-  .sandbox {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  .header {
+  .editor {
     border: 3px dashed #787575; // Temporary border to demo layout. TODO: Remove.
-  }
-
-  .layout {
+    border-top: 0; // Temporary border to demo layout. TODO: Remove.
     display: flex;
+    flex: 0 0 230px;
     height: 100%;
   }
 }
