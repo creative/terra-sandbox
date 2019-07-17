@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/terra-sandbox/static/css/main.329a6f13.chunk.css",
-    "main.js": "/terra-sandbox/static/js/main.f452843e.chunk.js",
-    "main.js.map": "/terra-sandbox/static/js/main.f452843e.chunk.js.map",
-    "runtime~main.js": "/terra-sandbox/static/js/runtime~main.bbc1f7d2.js",
-    "runtime~main.js.map": "/terra-sandbox/static/js/runtime~main.bbc1f7d2.js.map",
-    "static/css/2.9eeccbd0.chunk.css": "/terra-sandbox/static/css/2.9eeccbd0.chunk.css",
-    "static/js/2.298693df.chunk.js": "/terra-sandbox/static/js/2.298693df.chunk.js",
-    "static/js/2.298693df.chunk.js.map": "/terra-sandbox/static/js/2.298693df.chunk.js.map",
-    "index.html": "/terra-sandbox/index.html",
-    "precache-manifest.b516dd347423117d8296bd2646e5a329.js": "/terra-sandbox/precache-manifest.b516dd347423117d8296bd2646e5a329.js",
-    "service-worker.js": "/terra-sandbox/service-worker.js",
-    "static/css/2.9eeccbd0.chunk.css.map": "/terra-sandbox/static/css/2.9eeccbd0.chunk.css.map",
-    "static/css/main.329a6f13.chunk.css.map": "/terra-sandbox/static/css/main.329a6f13.chunk.css.map"
+    "main.css": "/devious-sandbox/static/css/main.329a6f13.chunk.css",
+    "main.js": "/devious-sandbox/static/js/main.f452843e.chunk.js",
+    "main.js.map": "/devious-sandbox/static/js/main.f452843e.chunk.js.map",
+    "runtime~main.js": "/devious-sandbox/static/js/runtime~main.e4924388.js",
+    "runtime~main.js.map": "/devious-sandbox/static/js/runtime~main.e4924388.js.map",
+    "static/css/2.9eeccbd0.chunk.css": "/devious-sandbox/static/css/2.9eeccbd0.chunk.css",
+    "static/js/2.298693df.chunk.js": "/devious-sandbox/static/js/2.298693df.chunk.js",
+    "static/js/2.298693df.chunk.js.map": "/devious-sandbox/static/js/2.298693df.chunk.js.map",
+    "index.html": "/devious-sandbox/index.html",
+    "precache-manifest.687b3275d5b5ea2e5a06a5a62eb1980a.js": "/devious-sandbox/precache-manifest.687b3275d5b5ea2e5a06a5a62eb1980a.js",
+    "service-worker.js": "/devious-sandbox/service-worker.js",
+    "static/css/2.9eeccbd0.chunk.css.map": "/devious-sandbox/static/css/2.9eeccbd0.chunk.css.map",
+    "static/css/main.329a6f13.chunk.css.map": "/devious-sandbox/static/css/main.329a6f13.chunk.css.map"
   }
 }
