@@ -1,18 +1,18 @@
 {
-  "name": "terra-sandbox",
+  "name": "devious-sandbox",
   "version": "0.0.0",
   "description": "A devious side project",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/devious-design/terra-sandbox.git"
+    "url": "git+https://github.com/devious-design/devious-sandbox.git"
   },
   "author": "Stephen Esser",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/devious-design/terra-sandbox/issues"
+    "url": "https://github.com/devious-design/devious-sandbox/issues"
   },
-  "homepage": "https://devious-design.github.io/terra-sandbox/",
+  "homepage": "https://devious-design.github.io/devious-sandbox/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
