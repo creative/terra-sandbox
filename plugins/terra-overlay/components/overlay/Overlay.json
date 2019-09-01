@@ -1,0 +1,109 @@
+{
+  "packageName": "terra-overlay",
+  "name": "Overlay",
+  "version": "3.26.0",
+  "description": "",
+  "documentation": "http://engineering.cerner.com/terra-ui/#/components/terra-overlay/overlay",
+  "props": {
+    "children": {
+      "type": "node",
+      "required": false,
+      "description": "The content to be displayed within the overlay.",
+      "displayName": "Children"
+    },
+    "isOpen": {
+      "type": "bool",
+      "required": false,
+      "description": "Indicates if the overlay is open.",
+      "displayName": "Open",
+      "defaultValue": "false"
+    },
+    "backgroundStyle": {
+      "type": "string",
+      "required": false,
+      "description": "The visual theme to be applied to the overlay background. Accepts 'light', 'dark', and 'clear'.",
+      "displayName": "Background style",
+      "defaultValue": "light",
+      "options": [
+        {
+          "displayName": "Light",
+          "value": "light",
+          "type": "string"
+        },
+        {
+          "displayName": "Dark",
+          "value": "dark",
+          "type": "string"
+        },
+        {
+          "displayName": "Clear",
+          "value": "clear",
+          "type": "string"
+        }
+      ]
+    },
+    "isScrollable": {
+      "type": "bool",
+      "required": false,
+      "description": "Indicates if the overlay content is scrollable.",
+      "displayName": "Scrollable",
+      "defaultValue": "false"
+    },
+    "onRequestClose": {
+      "type": "func",
+      "required": false,
+      "description": "Callback triggered on overlay click or ESC key. Setting this enables close behavior.",
+      "displayName": "On request close"
+    },
+    "isRelativeToContainer": {
+      "type": "bool",
+      "required": false,
+      "description": "Indicates if the overlay is relative to the triggering container.",
+      "displayName": "Relative to container",
+      "defaultValue": "false"
+    },
+    "rootSelector": {
+      "type": "string",
+      "required": false,
+      "description": "Used to select the root mount DOM node. This is used to help prevent focus from shifting outside of the overlay when it is opened in a portal.",
+      "displayName": "Root selector",
+      "defaultValue": "#root"
+    },
+    "zIndex": {
+      "type": "string",
+      "required": false,
+      "description": "Z-Index layer to apply to the ModalContent and ModalOverlay. Valid values are '100', '6000', '7000', '8000', or '9000'.",
+      "displayName": "Z index",
+      "defaultValue": "100",
+      "options": [
+        {
+          "displayName": "100",
+          "value": "100",
+          "type": "string"
+        },
+        {
+          "displayName": "6000",
+          "value": "6000",
+          "type": "string"
+        },
+        {
+          "displayName": "7000",
+          "value": "7000",
+          "type": "string"
+        },
+        {
+          "displayName": "8000",
+          "value": "8000",
+          "type": "string"
+        },
+        {
+          "displayName": "9000",
+          "value": "9000",
+          "type": "string"
+        }
+      ]
+    }
+  },
+  "key": "terra-overlay:Overlay",
+  "exportType": "Default"
+}

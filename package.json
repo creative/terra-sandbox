@@ -15,14 +15,17 @@
   "homepage": "https://devious-design.github.io/devious-sandbox/",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run build:plugins && react-scripts build",
+    "build:plugins": "node ./build-scripts/build-plugins.js",
     "lint": "npm run lint:scss && npm run lint:js",
     "lint:js": "eslint --ext .js,.jsx .",
     "lint:scss": "stylelint src/**/*.scss",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false && npm run test:scripts",
+    "test:scripts": "jest --config jestconfig.js --coverage",
     "clean": "rm -rf node_modules && rm -rf build",
     "clean:install": "npm run clean && npm install",
     "eject": "react-scripts eject",
+    "postinstall": "npm run build:plugins",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
@@ -41,14 +44,17 @@
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-intl": "^2.9.0",
-    "react-scripts": "3.0.1",
-    "terra-base": "^5.11.0"
+    "react-scripts": "3.1.1",
+    "terra-base": "^5.11.0",
+    "terra-card": "^3.12.0",
+    "terra-list": "^4.10.0",
+    "terra-overlay": "^3.19.0"
   },
   "devDependencies": {
     "browserslist-config-terra": "^1.2.0",
-    "eslint": "^5.16.0",
-    "eslint-config-terra": "^2.5.0",
+    "eslint": "^6.0.0",
+    "eslint-config-terra": "^3.0.0",
+    "react-docgen": "^4.1.1",
     "stylelint": "^10.1.0",
     "stylelint-config-terra": "^3.1.0"
   }

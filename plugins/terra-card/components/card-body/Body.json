@@ -1,0 +1,39 @@
+{
+  "packageName": "terra-card",
+  "name": "Body",
+  "version": "3.17.0",
+  "description": "",
+  "documentation": "http://engineering.cerner.com/terra-ui/#/components/terra-card/card",
+  "props": {
+    "children": {
+      "type": "node",
+      "required": false,
+      "description": "Child Nodes",
+      "displayName": "Children"
+    },
+    "hasPaddingVertical": {
+      "type": "bool",
+      "required": false,
+      "description": "Provides themeable padding vertical",
+      "displayName": "Has padding vertical",
+      "defaultValue": "true"
+    },
+    "hasPaddingHorizontal": {
+      "type": "bool",
+      "required": false,
+      "description": "Provides themeable padding horizontal",
+      "displayName": "Has padding horizontal",
+      "defaultValue": "true"
+    },
+    "isContentCentered": {
+      "type": "bool",
+      "required": false,
+      "description": "Sets the content of the card to be centered",
+      "displayName": "Content centered",
+      "defaultValue": "false"
+    }
+  },
+  "key": "terra-card:Card:Body",
+  "parent": "terra-card:Card",
+  "exportType": "Subcomponent"
+}

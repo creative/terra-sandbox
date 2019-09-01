@@ -1,0 +1,50 @@
+{
+  "packageName": "terra-list",
+  "name": "Item",
+  "version": "4.16.0",
+  "description": "",
+  "documentation": "http://engineering.cerner.com/terra-ui/#/components/terra-list/list",
+  "props": {
+    "children": {
+      "type": "node",
+      "required": false,
+      "description": "The content element to be placed inside the list item for display.",
+      "displayName": "Children"
+    },
+    "hasChevron": {
+      "type": "bool",
+      "required": false,
+      "description": "Whether or not the list item has a disclosure indicator presented.",
+      "displayName": "Has chevron",
+      "defaultValue": "false"
+    },
+    "isSelected": {
+      "type": "bool",
+      "required": false,
+      "description": "Whether or not the list item should have selection styles applied.",
+      "displayName": "Selected",
+      "defaultValue": "false"
+    },
+    "isSelectable": {
+      "type": "bool",
+      "required": false,
+      "description": "Whether or not the list item should have styles to indicate the item is selectable.",
+      "displayName": "Selectable",
+      "defaultValue": "false"
+    },
+    "onSelect": {
+      "type": "func",
+      "required": false,
+      "description": "Function callback for when the appropriate click or key action is performed.\nCallback contains the javascript evnt and prop metadata, e.g. onSelect(event, metaData)",
+      "displayName": "On select"
+    },
+    "refCallback": {
+      "type": "func",
+      "required": false,
+      "description": "Function callback for the ref of the li.",
+      "displayName": "Ref callback"
+    }
+  },
+  "key": "terra-list:Item",
+  "exportType": "Export"
+}

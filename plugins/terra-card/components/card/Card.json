@@ -1,0 +1,23 @@
+{
+  "packageName": "terra-card",
+  "name": "Card",
+  "version": "3.17.0",
+  "description": "",
+  "documentation": "http://engineering.cerner.com/terra-ui/#/components/terra-card/card",
+  "props": {
+    "children": {
+      "type": "node",
+      "required": false,
+      "description": "Child Nodes",
+      "displayName": "Children"
+    },
+    "visuallyHiddenText": {
+      "type": "string",
+      "required": false,
+      "description": "Text that describes the badge to a screen reader. Use this\nif more information is needed to accurately describe\nthis card to screen reader users.",
+      "displayName": "Visually hidden text"
+    }
+  },
+  "key": "terra-card:Card",
+  "exportType": "Default"
+}

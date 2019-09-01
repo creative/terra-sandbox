@@ -1,0 +1,7 @@
+{
+  "plugins": [
+    "terra-card",
+    "terra-list",
+    "terra-overlay"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "defaultExport": {
+    "sourceFile": "/src/Card.jsx",
+    "subcomponents": {
+      "Body": {
+        "sourceFile": "/src/CardBody.jsx"
+      }
+    }
+  }
+}

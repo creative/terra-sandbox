@@ -1,0 +1,78 @@
+{
+  "packageName": "terra-list",
+  "name": "List",
+  "version": "4.16.0",
+  "description": "",
+  "documentation": "http://engineering.cerner.com/terra-ui/#/components/terra-list/list",
+  "props": {
+    "children": {
+      "type": "node",
+      "required": false,
+      "description": "The children list items passed to the component.",
+      "displayName": "Children"
+    },
+    "dividerStyle": {
+      "type": "string",
+      "required": false,
+      "description": "Whether or not the list's child items should have a border color applied.\nOne of `'none'`, `'standard'`, `'bottom-only'`.",
+      "displayName": "Divider style",
+      "defaultValue": "none",
+      "options": [
+        {
+          "displayName": "None",
+          "value": "none",
+          "type": "string"
+        },
+        {
+          "displayName": "Standard",
+          "value": "standard",
+          "type": "string"
+        },
+        {
+          "displayName": "Bottom-only",
+          "value": "bottom-only",
+          "type": "string"
+        }
+      ]
+    },
+    "paddingStyle": {
+      "type": "string",
+      "required": false,
+      "description": "The padding styling to apply to the child list item content.\nOne of `'none'`, `'standard'`, `'compact'`.",
+      "displayName": "Padding style",
+      "defaultValue": "none",
+      "options": [
+        {
+          "displayName": "None",
+          "value": "none",
+          "type": "string"
+        },
+        {
+          "displayName": "Standard",
+          "value": "standard",
+          "type": "string"
+        },
+        {
+          "displayName": "Compact",
+          "value": "compact",
+          "type": "string"
+        }
+      ]
+    },
+    "refCallback": {
+      "type": "func",
+      "required": false,
+      "description": "Function callback for the ref of the ul.",
+      "displayName": "Ref callback"
+    },
+    "role": {
+      "type": "string",
+      "required": false,
+      "description": "Accessibility role of the list, defaults to 'none'. If creating a list with selectable items, pass 'listbox'.",
+      "displayName": "Role",
+      "defaultValue": "none"
+    }
+  },
+  "key": "terra-list:List",
+  "exportType": "Default"
+}

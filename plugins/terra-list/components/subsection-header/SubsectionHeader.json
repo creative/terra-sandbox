@@ -1,0 +1,57 @@
+{
+  "packageName": "terra-list",
+  "name": "SubsectionHeader",
+  "version": "4.16.0",
+  "description": "",
+  "documentation": "http://engineering.cerner.com/terra-ui/#/components/terra-list/list",
+  "props": {
+    "level": {
+      "type": "number",
+      "required": false,
+      "description": "Optionally sets the heading level. One of `2`, `3`, `4`, `5`, `6`.",
+      "displayName": "Level",
+      "defaultValue": "2",
+      "options": [
+        {
+          "displayName": "2",
+          "value": "2",
+          "type": "number"
+        },
+        {
+          "displayName": "3",
+          "value": "3",
+          "type": "number"
+        },
+        {
+          "displayName": "4",
+          "value": "4",
+          "type": "number"
+        },
+        {
+          "displayName": "5",
+          "value": "5",
+          "type": "number"
+        },
+        {
+          "displayName": "6",
+          "value": "6",
+          "type": "number"
+        }
+      ]
+    },
+    "refCallback": {
+      "type": "func",
+      "required": false,
+      "description": "Function callback passthrough for the ref of the section li.",
+      "displayName": "Ref callback"
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "description": "Title text to be placed within the subsection header.",
+      "displayName": "Title"
+    }
+  },
+  "key": "terra-list:SubsectionHeader",
+  "exportType": "Export"
+}

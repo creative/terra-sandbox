@@ -1,0 +1,88 @@
+{
+  "packageName": "terra-list",
+  "name": "Section",
+  "version": "4.16.0",
+  "description": "",
+  "documentation": "http://engineering.cerner.com/terra-ui/#/components/terra-list/list",
+  "props": {
+    "children": {
+      "type": "node",
+      "required": false,
+      "description": "The children list items passed to the component.",
+      "displayName": "Children"
+    },
+    "isCollapsed": {
+      "type": "bool",
+      "required": false,
+      "description": "Whether or not the section is collapsed.",
+      "displayName": "Collapsed",
+      "defaultValue": "false"
+    },
+    "isCollapsible": {
+      "type": "bool",
+      "required": false,
+      "description": "Whether or not the section can be collapsed.",
+      "displayName": "Collapsible",
+      "defaultValue": "false"
+    },
+    "level": {
+      "type": "number",
+      "required": false,
+      "description": "Optionally sets the heading level. One of `1`, `2`, `3`, `4`, `5`, `6`.",
+      "displayName": "Level",
+      "defaultValue": "1",
+      "options": [
+        {
+          "displayName": "1",
+          "value": "1",
+          "type": "number"
+        },
+        {
+          "displayName": "2",
+          "value": "2",
+          "type": "number"
+        },
+        {
+          "displayName": "3",
+          "value": "3",
+          "type": "number"
+        },
+        {
+          "displayName": "4",
+          "value": "4",
+          "type": "number"
+        },
+        {
+          "displayName": "5",
+          "value": "5",
+          "type": "number"
+        },
+        {
+          "displayName": "6",
+          "value": "6",
+          "type": "number"
+        }
+      ]
+    },
+    "onSelect": {
+      "type": "func",
+      "required": false,
+      "description": "Function callback for when the appropriate click or key action is performed.\nCallback contains the javascript evnt and prop metadata, e.g. onSelect(event, metaData)",
+      "displayName": "On select"
+    },
+    "refCallback": {
+      "type": "func",
+      "required": false,
+      "description": "Function callback passthrough for the ref of the section li.",
+      "displayName": "Ref callback"
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "description": "Title text to be placed within the section header.",
+      "displayName": "Title"
+    }
+  },
+  "key": "terra-list:Section",
+  "exportType": "Export"
+}
