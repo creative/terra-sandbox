@@ -53,6 +53,7 @@ describe('Plugins', () => {
           packageName: 'mock-package',
           version: '1.0.0',
           key: 'mock-package:mockComponentName',
+          subcomponents: [],
           exportType: 'Default',
         },
       };
@@ -82,6 +83,10 @@ describe('Plugins', () => {
           packageName: 'mock-package',
           version: '1.0.0',
           key: 'mock-package:mockComponentName',
+          subcomponents: [
+            'mockSubcomponent1',
+            'mockSubcomponent2',
+          ],
           exportType: 'Default',
         },
         mockSubcomponent1: {},
@@ -122,6 +127,10 @@ describe('Plugins', () => {
           name: 'mockComponentName1',
           version: '1.0.0',
           key: 'mock-package:mockComponentName1',
+          subcomponents: [
+            'mockSubcomponent1',
+            'mockSubcomponent2',
+          ],
           exportType: 'Default',
         },
         mockSubcomponent1: {},
@@ -131,6 +140,7 @@ describe('Plugins', () => {
           name: 'mockComponentName2',
           version: '1.0.0',
           key: 'mock-package:mockComponentName2',
+          subcomponents: [],
           exportType: 'Default',
         },
       };

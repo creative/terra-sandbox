@@ -58,5 +58,6 @@
     }
   },
   "key": "terra-list:SectionHeader",
-  "exportType": "Export"
+  "exportType": "Export",
+  "subcomponents": []
 }

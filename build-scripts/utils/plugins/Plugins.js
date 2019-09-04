@@ -52,14 +52,14 @@ class Plugins {
     Object.keys(config).forEach((name) => {
       const key = Plugins.key(packageName, name);
       const component = Component.create(packageName, name, config[name]);
+      const subcomponents = Plugins.createSubcomponents(packageName, config[name].subcomponents, name);
 
       component.key = key;
       component.exportType = exportType;
-
+      component.subcomponents = Object.keys(subcomponents);
       components[key] = component;
 
-      const { subcomponents } = config[name];
-      Object.assign(components, Plugins.createSubcomponents(packageName, subcomponents, name));
+      Object.assign(components, subcomponents);
     });
 
     return components;

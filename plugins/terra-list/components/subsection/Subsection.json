@@ -79,5 +79,6 @@
     }
   },
   "key": "terra-list:Subsection",
-  "exportType": "Export"
+  "exportType": "Export",
+  "subcomponents": []
 }

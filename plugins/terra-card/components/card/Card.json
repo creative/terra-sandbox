@@ -19,5 +19,8 @@
     }
   },
   "key": "terra-card:Card",
-  "exportType": "Default"
+  "exportType": "Default",
+  "subcomponents": [
+    "terra-card:Card:Body"
+  ]
 }

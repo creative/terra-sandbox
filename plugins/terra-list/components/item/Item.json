@@ -46,5 +46,6 @@
     }
   },
   "key": "terra-list:Item",
-  "exportType": "Export"
+  "exportType": "Export",
+  "subcomponents": []
 }

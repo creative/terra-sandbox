@@ -105,5 +105,6 @@
     }
   },
   "key": "terra-overlay:Overlay",
-  "exportType": "Default"
+  "exportType": "Default",
+  "subcomponents": []
 }
