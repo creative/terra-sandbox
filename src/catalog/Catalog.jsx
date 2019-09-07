@@ -16,6 +16,7 @@ const Catalog = () => {
           className={cx('input')}
           onChange={(event) => setSearchValue(event.target.value.toLowerCase())}
           placeholder="Search Components"
+          type="Search"
           value={searchValue}
         />
       </div>
