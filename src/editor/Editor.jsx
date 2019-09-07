@@ -4,10 +4,10 @@ import styles from './Editor.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Workspace = () => (
+const Editor = () => (
   <div className={cx('editor')}>
     Editor
   </div>
 );
 
-export default Workspace;
+export default Editor;
