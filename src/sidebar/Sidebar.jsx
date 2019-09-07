@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames/bind';
+import Catalog from '../catalog/Catalog';
 import Layers from '../layers/Layers';
 import styles from './Sidebar.module.scss';
 
@@ -54,9 +55,7 @@ const Sidebar = () => {
   return (
   // eslint-disable-next-line react/forbid-dom-props
     <div className={cx('sidebar')} style={{ width: `${width}px` }}>
-      <div className={cx('components')}>
-        Components
-      </div>
+      <Catalog />
       <Layers />
       <div className={cx('resizer')} onMouseDown={handleMouseDown} role="presentation" />
     </div>

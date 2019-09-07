@@ -12,14 +12,6 @@
     position: relative;
   }
 
-  .components {
-    border-bottom: 3px dashed #787575; // Temporary border to demo layout. TODO: Remove.
-    display: flex;
-    flex-grow: 1;
-    flex-shrink: 1;
-    min-height: 36px;
-  }
-
   .resizer {
     cursor: ew-resize;
     height: 100%;
