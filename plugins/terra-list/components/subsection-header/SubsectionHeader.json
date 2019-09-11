@@ -1,7 +1,7 @@
 {
   "packageName": "terra-list",
   "name": "SubsectionHeader",
-  "version": "4.16.0",
+  "version": "4.18.0",
   "description": "",
   "documentation": "http://engineering.cerner.com/terra-ui/#/components/terra-list/list",
   "props": {

@@ -172,7 +172,7 @@ class Plugins {
       Plugins.writeFile(destination, component);
     });
 
-    Plugins.writeFile(`${process.cwd()}/src/plugins.json`, config, null);
+    Plugins.writeFile(`${process.cwd()}/src/plugins/plugins.json`, config, null);
   }
 }
 

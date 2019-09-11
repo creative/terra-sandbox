@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Catalog.module.scss';
-import plugins from '../plugins.json';
+import plugins from '../../plugins/plugins.json';
 
 const cx = classNames.bind(styles);
 
