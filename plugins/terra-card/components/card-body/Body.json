@@ -3,7 +3,7 @@
   "name": "Body",
   "version": "3.19.0",
   "description": "",
-  "documentation": "http://engineering.cerner.com/terra-ui/#/components/terra-card/card",
+  "documentation": "http://engineering.cerner.com/terra-ui/#/components/terra-card/card/card",
   "props": {
     "children": {
       "type": "node",

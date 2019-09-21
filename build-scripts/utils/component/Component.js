@@ -56,7 +56,9 @@ class Component {
    * @returns {string} - A documentation URL.
    */
   static documentationUrl(packageName) {
-    return `${BASE_URL}${packageName}/${packageName.replace('terra-', '')}`;
+    const name = packageName.replace('terra-', '');
+
+    return `${BASE_URL}${packageName}/${name}/${name}`;
   }
 
   /**

@@ -80,7 +80,7 @@ describe('Component', () => {
   describe('documentationUrl', () => {
     it('returns the terra-ui documentation url for a provided package', () => {
       const url = Component.documentationUrl('terra-mock-package');
-      const expected = 'http://engineering.cerner.com/terra-ui/#/components/terra-mock-package/mock-package';
+      const expected = 'http://engineering.cerner.com/terra-ui/#/components/terra-mock-package/mock-package/mock-package';
 
       expect(url).toEqual(expected);
     });
