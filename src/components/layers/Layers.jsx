@@ -51,8 +51,8 @@ const Layers = () => {
   return (
     // eslint-disable-next-line react/forbid-dom-props
     <div className={cx('layers')} style={{ height }}>
-      <div className={cx('header')} onMouseDown={handleMouseDown} role="presentation">
-        <div className={cx('resizer')} />
+      <div className={cx('resizer')} onMouseDown={handleMouseDown} role="presentation" />
+      <div className={cx('header')}>
         Layers
       </div>
     </div>
