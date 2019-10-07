@@ -1,2 +1,0 @@
-(window["webpackJsonpdevious-sandbox"]=window["webpackJsonpdevious-sandbox"]||[]).push([[6],{77:function(e,a,o){"use strict";Object.defineProperty(a,"__esModule",{value:!0}),a.messages=a.locale=a.areTranslationsLoaded=void 0;var d,s=o(22),n=o(94),l=(d=n)&&d.__esModule?d:{default:d};(0,s.addLocaleData)(l.default);a.areTranslationsLoaded=!0,a.locale="en",a.messages={"Terra.ajax.error":"This content failed to load.","Terra.Overlay.loading":"Loading..."}}}]);
-//# sourceMappingURL=en-translations.e9991a0f.chunk.js.map
