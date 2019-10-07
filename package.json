@@ -1,18 +1,18 @@
 {
-  "name": "devious-sandbox",
+  "name": "terra-sandbox",
   "version": "0.0.0",
-  "description": "A devious side project",
+  "description": "A drag and drop sandbox for terra-ui components",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/devious-design/devious-sandbox.git"
+    "url": "git+https://github.com/creative/terra-sandbox.git"
   },
   "author": "Stephen Esser",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/devious-design/devious-sandbox/issues"
+    "url": "https://github.com/creative/terra-sandbox/issues"
   },
-  "homepage": "https://devious-design.github.io/devious-sandbox/",
+  "homepage": "https://creative.github.io/terra-sandbox/",
   "scripts": {
     "start": "react-scripts start",
     "aggregate-translations": "tt-aggregate-translations -b ./ -d ./src/**/translations -d ./translations -o ./node_modules/terra-i18n/node_modules -f es6",
