@@ -1,7 +1,7 @@
 {
   "packageName": "terra-list",
   "name": "Section",
-  "version": "4.20.0",
+  "version": "4.21.0",
   "description": "",
   "documentation": "http://engineering.cerner.com/terra-ui/#/components/terra-list/list/list",
   "props": {
@@ -67,7 +67,7 @@
     "onSelect": {
       "type": "func",
       "required": false,
-      "description": "Function callback for when the appropriate click or key action is performed.\nCallback contains the javascript evnt and prop metadata, e.g. onSelect(event, metaData)",
+      "description": "Function callback for when the appropriate click or key action is performed.\nCallback contains the javascript event and prop metadata, e.g. onSelect(event, metaData)",
       "displayName": "On select"
     },
     "refCallback": {
