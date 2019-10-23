@@ -1,17 +1,10 @@
 {
-  "addons": [
-
-  ],
-  "buildpacks": [
-
-  ],
-  "description": "Add heroku app.json file",
-  "env": {
-  },
-  "formation": {
-  },
   "name": "terra-sandbox",
-  "scripts": {
-  },
+  "description": "Add heroku app.json file",
+  "addons": [],
+  "buildpacks": [],
+  "env": {},
+  "formation": {},
+  "scripts": {},
   "stack": "heroku-18"
 }
