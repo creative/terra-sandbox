@@ -16,7 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "aggregate-translations": "tt-aggregate-translations -b ./ -d ./src/**/translations -d ./translations -o ./node_modules/terra-i18n/node_modules -f es6",
-    "build": "npm run build:plugins && react-scripts build",
+    "build": "react-scripts build",
     "build:plugins": "node ./build-scripts/build-plugins.js",
     "lint": "npm run lint:scss && npm run lint:js",
     "lint:js": "eslint --ext .js,.jsx .",
