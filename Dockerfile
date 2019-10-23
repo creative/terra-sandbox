@@ -21,6 +21,10 @@ FROM nginx:1.17.5-alpine
 
 COPY --from=build /app/build /usr/share/nginx/html
 
+RUN echo $PORT
+RUN echo "$PORT"
+RUN echo stuff is here
+
 COPY site.template /etc/nginx/conf.d/site.template
 RUN if [ $PORT ] ; then echo port found $PORT "$PORT" ; fi
 
