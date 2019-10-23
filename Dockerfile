@@ -21,6 +21,9 @@ FROM nginx:1.17.5-alpine
 
 COPY --from=build /app/build /usr/share/nginx/html
 
+COPY site.template /etc/nginx/conf.d/site.template
+RUN if [ "$PORT" ] ; then /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/default.conf" ; fi
+
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
