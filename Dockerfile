@@ -22,7 +22,7 @@ FROM nginx:1.17.5-alpine
 COPY --from=build /app/build /usr/share/nginx/html
 
 COPY site.template /etc/nginx/conf.d/site.template
-RUN if [ "$PORT" ] ; then echo port found $PORT "$PORT" ; fi
+RUN if [ $PORT ] ; then echo port found $PORT "$PORT" ; fi
 
 EXPOSE 80
 
