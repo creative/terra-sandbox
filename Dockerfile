@@ -21,12 +21,10 @@ FROM nginx:1.17.5-alpine
 
 COPY --from=build /app/build /usr/share/nginx/html
 
-RUN echo $PORT
-RUN echo "$PORT"
-RUN echo stuff is here
+RUN echo "Hello There"
 
 COPY site.template /etc/nginx/conf.d/site.template
-RUN if [ $PORT ] ; then echo port found $PORT "$PORT" ; fi
+RUN if [ $PORT ] ; then /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/default.conf" ; fi
 
 EXPOSE 80
 
