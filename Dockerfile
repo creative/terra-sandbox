@@ -1,7 +1,5 @@
 FROM node:10 AS build
 
-RUN echo "Is this working?"
-
 # Set the working directory
 WORKDIR /app
 
@@ -23,10 +21,12 @@ FROM nginx:1.17.5-alpine
 
 COPY --from=build /app/build /usr/share/nginx/html
 
-RUN echo "Hello There"
+RUN echo $PORT
+RUN echo "$PORT"
+RUN echo "${$PORT}"
 
-COPY site.template /etc/nginx/conf.d/site.template
-RUN if [ $PORT ] ; then /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/default.conf" ; fi
+# COPY site.template /etc/nginx/conf.d/site.template
+# RUN if [ $PORT ] ; then /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/default.conf" ; fi
 
 EXPOSE 80
 
