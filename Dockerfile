@@ -21,17 +21,3 @@ RUN npm install -g serve
 ENV PORT 80
 
 CMD ["sh", "-c", "serve -s build -l $PORT"]
-
-# FROM nginx:1.17.5-alpine
-
-# COPY --from=build /app/build /usr/share/nginx/html
-
-# ENV PORT 80
-
-# COPY site.template /etc/nginx/conf.d/site.template
-
-# EXPOSE 80
-
-# CMD sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
-
-# serve -s build
