@@ -4,7 +4,12 @@
   "addons": [],
   "buildpacks": [],
   "env": {},
-  "formation": {},
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
   "scripts": {},
   "stack": "container"
 }
