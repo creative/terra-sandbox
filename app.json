@@ -1,15 +1,10 @@
 {
   "name": "terra-sandbox",
   "description": "Add heroku app.json file",
+  "stack": "container",
   "addons": [],
   "buildpacks": [],
   "env": {},
-  "formation": {
-    "web": {
-      "quantity": 1,
-      "size": "free"
-    }
-  },
-  "scripts": {},
-  "stack": "container"
+  "formation": {},
+  "scripts": {}
 }
