@@ -24,8 +24,7 @@ COPY --from=build /app/build /usr/share/nginx/html
 ENV PORT 80
 
 COPY site.template /etc/nginx/conf.d/site.template
-RUN envsubst '\$PORT' < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
