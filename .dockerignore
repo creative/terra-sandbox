@@ -1,0 +1,6 @@
+node_modules
+build
+build-scripts
+plugins
+app.json
+.git
