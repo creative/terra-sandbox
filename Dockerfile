@@ -1,31 +1,33 @@
 FROM node:10 AS build
 
-# Set the working directory
-WORKDIR /app
+RUN echo "Is this working?"
 
-ENV PATH /app/node_modules/.bin:$PATH
-ENV PUBLIC_URL /
+# # Set the working directory
+# WORKDIR /app
 
-# Install and cache app dependencies
-COPY package.json /app/package.json
-COPY package-lock.json /app/package-lock.json
+# ENV PATH /app/node_modules/.bin:$PATH
+# ENV PUBLIC_URL /
 
-RUN npm install
+# # Install and cache app dependencies
+# COPY package.json /app/package.json
+# COPY package-lock.json /app/package-lock.json
 
-COPY . /app
+# RUN npm install
 
-RUN npm run aggregate-translations
-RUN npm run build
+# COPY . /app
 
-FROM nginx:1.17.5-alpine
+# RUN npm run aggregate-translations
+# RUN npm run build
 
-COPY --from=build /app/build /usr/share/nginx/html
+# FROM nginx:1.17.5-alpine
 
-RUN echo "Hello There"
+# COPY --from=build /app/build /usr/share/nginx/html
 
-COPY site.template /etc/nginx/conf.d/site.template
-RUN if [ $PORT ] ; then /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/default.conf" ; fi
+# RUN echo "Hello There"
 
-EXPOSE 80
+# COPY site.template /etc/nginx/conf.d/site.template
+# RUN if [ $PORT ] ; then /bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/default.conf" ; fi
 
-CMD ["nginx", "-g", "daemon off;"]
+# EXPOSE 80
+
+# CMD ["nginx", "-g", "daemon off;"]
