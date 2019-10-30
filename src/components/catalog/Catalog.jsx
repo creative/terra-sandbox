@@ -18,13 +18,14 @@ const Catalog = () => {
   };
 
   /**
-   * The filtered component list to populate the catalog. Subcomponents are excluded.
+   * The filtered component list to populate the catalog.
    */
   const components = Object.keys(plugins).map((key) => {
     const { name, exportType } = plugins[key];
 
+    // Subcomponents are excluded.
     if (exportType === 'Default' && name.toLowerCase().indexOf(searchValue) > -1) {
-      return <CatalogItem key={key} name={name} />;
+      return <CatalogItem key={key} identifier={key} name={name} />;
     }
 
     return undefined;
