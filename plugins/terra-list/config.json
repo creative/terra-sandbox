@@ -1,22 +1,22 @@
 {
   "defaultExport": {
-    "sourceFile": "/src/List.jsx"
-  },
-  "componentExports": {
-    "Item": {
-      "sourceFile": "/src/ListItem.jsx"
-    },
-    "Section": {
-      "sourceFile": "/src/ListSection.jsx"
-    },
-    "SectionHeader": {
-      "sourceFile": "/src/ListSectionHeader.jsx"
-    },
-    "Subsection": {
-      "sourceFile": "/src/ListSubsection.jsx"
-    },
-    "SubsectionHeader": {
-      "sourceFile": "/src/ListSubsectionHeader.jsx"
+    "sourceFile": "/src/List.jsx",
+    "componentExports": {
+      "Item": {
+        "sourceFile": "/src/ListItem.jsx"
+      },
+      "Section": {
+        "sourceFile": "/src/ListSection.jsx"
+      },
+      "SectionHeader": {
+        "sourceFile": "/src/ListSectionHeader.jsx"
+      },
+      "Subsection": {
+        "sourceFile": "/src/ListSubsection.jsx"
+      },
+      "SubsectionHeader": {
+        "sourceFile": "/src/ListSubsectionHeader.jsx"
+      }
     }
   }
 }

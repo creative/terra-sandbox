@@ -45,7 +45,7 @@
       "displayName": "Ref callback"
     }
   },
-  "key": "terra-list:Item",
-  "exportType": "Export",
-  "subcomponents": []
+  "key": "terra-list:List:Item",
+  "parent": "terra-list:List",
+  "exportType": "Export"
 }

@@ -20,7 +20,9 @@
   },
   "key": "terra-card:Card",
   "exportType": "Default",
+  "importFrom": "terra-card",
   "subcomponents": [
     "terra-card:Card:Body"
-  ]
+  ],
+  "componentExports": []
 }

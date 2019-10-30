@@ -34,7 +34,8 @@
     "extends browserslist-config-terra"
   ],
   "eslintConfig": {
-    "extends": "terra"
+    "extends": "terra",
+    "parser": "babel-eslint"
   },
   "stylelint": {
     "extends": "stylelint-config-terra"
