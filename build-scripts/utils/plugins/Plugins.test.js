@@ -50,10 +50,12 @@ describe('Plugins', () => {
       const expectedConfig = {
         'mock-package:mockComponentName': {
           name: 'mockComponentName',
+          importFrom: 'mock-package',
           packageName: 'mock-package',
           version: '1.0.0',
           key: 'mock-package:mockComponentName',
           subcomponents: [],
+          componentExports: [],
           exportType: 'Default',
         },
       };
@@ -80,6 +82,7 @@ describe('Plugins', () => {
       const expectedConfig = {
         'mock-package:mockComponentName': {
           name: 'mockComponentName',
+          importFrom: 'mock-package',
           packageName: 'mock-package',
           version: '1.0.0',
           key: 'mock-package:mockComponentName',
@@ -87,6 +90,7 @@ describe('Plugins', () => {
             'mockSubcomponent1',
             'mockSubcomponent2',
           ],
+          componentExports: [],
           exportType: 'Default',
         },
         mockSubcomponent1: {},
@@ -113,6 +117,7 @@ describe('Plugins', () => {
             mockSubcomponent1: {},
             mockSubcomponent2: {},
           },
+          componentExports: [],
         },
         mockComponentName2: {
           sourceFile: '../mock/mockFile2',
@@ -123,6 +128,7 @@ describe('Plugins', () => {
 
       const expectedConfig = {
         'mock-package:mockComponentName1': {
+          importFrom: 'mock-package',
           packageName: 'mock-package',
           name: 'mockComponentName1',
           version: '1.0.0',
@@ -131,16 +137,19 @@ describe('Plugins', () => {
             'mockSubcomponent1',
             'mockSubcomponent2',
           ],
+          componentExports: [],
           exportType: 'Default',
         },
         mockSubcomponent1: {},
         mockSubcomponent2: {},
         'mock-package:mockComponentName2': {
+          importFrom: 'mock-package',
           packageName: 'mock-package',
           name: 'mockComponentName2',
           version: '1.0.0',
           key: 'mock-package:mockComponentName2',
           subcomponents: [],
+          componentExports: [],
           exportType: 'Default',
         },
       };
@@ -186,13 +195,13 @@ describe('Plugins', () => {
       const mockConfig = {
         defaultExport: {
           sourceFile: '/src/MockDefault.jsx',
-        },
-        componentExports: {
-          MockExport1: {
-            sourceFile: '/src/MockDefault1.jsx',
-          },
-          MockExport2: {
-            sourceFile: '/src/MockDefault2jsx',
+          componentExports: {
+            MockExport1: {
+              sourceFile: '/src/MockDefault1.jsx',
+            },
+            MockExport2: {
+              sourceFile: '/src/MockDefault2jsx',
+            },
           },
         },
       };
@@ -209,13 +218,10 @@ describe('Plugins', () => {
 
       const expectedConfig = {
         'mock-plugin-1-Default': { exportType: 'Default' },
-        'mock-plugin-1-Export': { exportType: 'Export' },
         'mock-plugin-1-Custom': { exportType: 'Custom' },
         'mock-plugin-2-Default': { exportType: 'Default' },
-        'mock-plugin-2-Export': { exportType: 'Export' },
         'mock-plugin-2-Custom': { exportType: 'Custom' },
         'mock-plugin-3-Default': { exportType: 'Default' },
-        'mock-plugin-3-Export': { exportType: 'Export' },
         'mock-plugin-3-Custom': { exportType: 'Custom' },
       };
 
@@ -230,7 +236,7 @@ describe('Plugins', () => {
       ];
 
       const mockConfig = {
-        componentExports: {
+        customExports: {
           MockExport1: {
             sourceFile: '/src/MockDefault1.jsx',
           },
@@ -251,11 +257,8 @@ describe('Plugins', () => {
       Plugins.generate(mockPlugins);
 
       const expectedConfig = {
-        'mock-plugin-1-Export': { exportType: 'Export' },
         'mock-plugin-1-Custom': { exportType: 'Custom' },
-        'mock-plugin-2-Export': { exportType: 'Export' },
         'mock-plugin-2-Custom': { exportType: 'Custom' },
-        'mock-plugin-3-Export': { exportType: 'Export' },
         'mock-plugin-3-Custom': { exportType: 'Custom' },
       };
 
@@ -278,8 +281,8 @@ describe('Plugins', () => {
   describe('writeFile', () => {
     it('creates a new directory is one does not exist', () => {
       jest.spyOn(fs, 'existsSync').mockImplementation(() => false);
-      jest.spyOn(fs, 'mkdirSync').mockImplementation(() => {});
-      jest.spyOn(fs, 'writeFileSync').mockImplementation(() => {});
+      jest.spyOn(fs, 'mkdirSync').mockImplementation(() => { });
+      jest.spyOn(fs, 'writeFileSync').mockImplementation(() => { });
 
       Plugins.writeFile('/mock/dir/Mock.json', {});
 
@@ -291,7 +294,7 @@ describe('Plugins', () => {
     it('writes to an existing file', () => {
       jest.spyOn(fs, 'existsSync').mockImplementation(() => true);
       jest.spyOn(fs, 'mkdirSync');
-      jest.spyOn(fs, 'writeFileSync').mockImplementation(() => {});
+      jest.spyOn(fs, 'writeFileSync').mockImplementation(() => { });
 
       Plugins.writeFile('/mock/dir/Mock.json', {});
 
@@ -303,7 +306,8 @@ describe('Plugins', () => {
 
   describe('writeFiles', () => {
     it('writes the necessary files', () => {
-      jest.spyOn(Plugins, 'writeFile').mockImplementation(() => {});
+      jest.spyOn(fs, 'writeFileSync').mockImplementation(() => { });
+      jest.spyOn(Plugins, 'writeFile').mockImplementation(() => { });
       jest.spyOn(Plugins, 'destination').mockImplementation((packageName, name, parent) => (
         `${packageName}/${parent || 'parent'}/${name}`
       ));
@@ -328,6 +332,7 @@ describe('Plugins', () => {
 
       expect(Plugins.writeFile).toHaveBeenCalledTimes(4);
       expect(Plugins.destination).toHaveBeenCalledTimes(3);
+      expect(fs.writeFileSync).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -385,6 +390,65 @@ describe('Plugins', () => {
 
     it('returns an empty object if the config is undefined', () => {
       const config = Plugins.createSubcomponents('mock-package', undefined, 'Parent');
+
+      expect(config).toEqual({});
+    });
+  });
+
+  describe('createComponentExports', () => {
+    it('returns a plugin configuration for component exports', () => {
+      jest.spyOn(Component, 'create').mockImplementation((packageName, name) => ({
+        packageName,
+        name,
+        version: '1.0.0',
+      }));
+
+      const mockConfig = {
+        mockComponent1: {
+          sourceFile: '../mock/MockFile1',
+        },
+        mockComponent2: {
+          sourceFile: '../mock/MockFile2',
+        },
+        mockComponent3: {
+          sourceFile: '../mock/MockFile3',
+        },
+      };
+
+      const config = Plugins.createComponentExports('mock-package', mockConfig, 'MockParent');
+
+      const expectedConfig = {
+        'mock-package:MockParent:mockComponent1': {
+          packageName: 'mock-package',
+          name: 'mockComponent1',
+          version: '1.0.0',
+          key: 'mock-package:MockParent:mockComponent1',
+          parent: 'mock-package:MockParent',
+          exportType: 'Export',
+        },
+        'mock-package:MockParent:mockComponent2': {
+          packageName: 'mock-package',
+          name: 'mockComponent2',
+          version: '1.0.0',
+          key: 'mock-package:MockParent:mockComponent2',
+          parent: 'mock-package:MockParent',
+          exportType: 'Export',
+        },
+        'mock-package:MockParent:mockComponent3': {
+          packageName: 'mock-package',
+          name: 'mockComponent3',
+          version: '1.0.0',
+          key: 'mock-package:MockParent:mockComponent3',
+          parent: 'mock-package:MockParent',
+          exportType: 'Export',
+        },
+      };
+
+      expect(config).toEqual(expectedConfig);
+    });
+
+    it('returns an empty object if the config is undefined', () => {
+      const config = Plugins.createComponentExports('mock-package', undefined, 'Parent');
 
       expect(config).toEqual({});
     });

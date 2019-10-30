@@ -83,7 +83,7 @@
       "displayName": "Title"
     }
   },
-  "key": "terra-list:Section",
-  "exportType": "Export",
-  "subcomponents": []
+  "key": "terra-list:List:Section",
+  "parent": "terra-list:List",
+  "exportType": "Export"
 }

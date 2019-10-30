@@ -1,30 +1,10 @@
 {
   "packageName": "terra-list",
-  "name": "Subsection",
+  "name": "SubsectionHeader",
   "version": "4.21.0",
   "description": "",
   "documentation": "http://engineering.cerner.com/terra-ui/#/components/terra-list/list/list",
   "props": {
-    "children": {
-      "type": "node",
-      "required": false,
-      "description": "The children list items passed to the component.",
-      "displayName": "Children"
-    },
-    "isCollapsed": {
-      "type": "bool",
-      "required": false,
-      "description": "Whether or not the subsection is collapsed.",
-      "displayName": "Collapsed",
-      "defaultValue": "false"
-    },
-    "isCollapsible": {
-      "type": "bool",
-      "required": false,
-      "description": "Whether or not the subsection can be collapsed.",
-      "displayName": "Collapsible",
-      "defaultValue": "false"
-    },
     "level": {
       "type": "number",
       "required": false,
@@ -59,12 +39,6 @@
         }
       ]
     },
-    "onSelect": {
-      "type": "func",
-      "required": false,
-      "description": "Function callback for when the appropriate click or key action is performed.\nCallback contains the javascript evnt and prop metadata, e.g. onSelect(event, metaData)",
-      "displayName": "On select"
-    },
     "refCallback": {
       "type": "func",
       "required": false,
@@ -78,7 +52,7 @@
       "displayName": "Title"
     }
   },
-  "key": "terra-list:Subsection",
-  "exportType": "Export",
-  "subcomponents": []
+  "key": "terra-list:List:SubsectionHeader",
+  "parent": "terra-list:List",
+  "exportType": "Export"
 }

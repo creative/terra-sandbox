@@ -1,6 +1,6 @@
 {
   "packageName": "terra-list",
-  "name": "SubsectionHeader",
+  "name": "SectionHeader",
   "version": "4.21.0",
   "description": "",
   "documentation": "http://engineering.cerner.com/terra-ui/#/components/terra-list/list/list",
@@ -8,10 +8,15 @@
     "level": {
       "type": "number",
       "required": false,
-      "description": "Optionally sets the heading level. One of `2`, `3`, `4`, `5`, `6`.",
+      "description": "Optionally sets the heading level. One of `1`, `2`, `3`, `4`, `5`, `6`.",
       "displayName": "Level",
-      "defaultValue": "2",
+      "defaultValue": "1",
       "options": [
+        {
+          "displayName": "1",
+          "value": "1",
+          "type": "number"
+        },
         {
           "displayName": "2",
           "value": "2",
@@ -48,11 +53,11 @@
     "title": {
       "type": "string",
       "required": true,
-      "description": "Title text to be placed within the subsection header.",
+      "description": "Title text to be placed within the section header.",
       "displayName": "Title"
     }
   },
-  "key": "terra-list:SubsectionHeader",
-  "exportType": "Export",
-  "subcomponents": []
+  "key": "terra-list:List:SectionHeader",
+  "parent": "terra-list:List",
+  "exportType": "Export"
 }

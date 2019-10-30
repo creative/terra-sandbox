@@ -75,5 +75,13 @@
   },
   "key": "terra-list:List",
   "exportType": "Default",
-  "subcomponents": []
+  "importFrom": "terra-list",
+  "subcomponents": [],
+  "componentExports": [
+    "terra-list:List:Item",
+    "terra-list:List:Section",
+    "terra-list:List:SectionHeader",
+    "terra-list:List:Subsection",
+    "terra-list:List:SubsectionHeader"
+  ]
 }

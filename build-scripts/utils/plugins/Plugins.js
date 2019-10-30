@@ -6,6 +6,8 @@ const Format = require('../format/Format');
 
 const ROOT_DIR = process.cwd();
 const PLUGINS_DIR = `${ROOT_DIR}/plugins/`;
+const PLUGINS_FILE = `${ROOT_DIR}/src/plugins/plugins.json`;
+const IMPORTS_FILE = `${ROOT_DIR}/src/plugins/imports.js`;
 
 /**
  * Supported export types.
@@ -53,13 +55,40 @@ class Plugins {
       const key = Plugins.key(packageName, name);
       const component = Component.create(packageName, name, config[name]);
       const subcomponents = Plugins.createSubcomponents(packageName, config[name].subcomponents, name);
+      const componentExports = Plugins.createComponentExports(packageName, config[name].componentExports, name);
 
       component.key = key;
       component.exportType = exportType;
+      component.importFrom = config[name].importFrom || packageName;
       component.subcomponents = Object.keys(subcomponents);
+      component.componentExports = Object.keys(componentExports);
       components[key] = component;
 
-      Object.assign(components, subcomponents);
+      Object.assign(components, subcomponents, componentExports);
+    });
+
+    return components;
+  }
+
+  /**
+   * Creates the component export configurations.
+   * @param {string} packageName - The package name.
+   * @param {Object} componentExports - The component exports of the parent.
+   * @param {string} parent - The parent component name.
+   * @returns {Object} - A key value pair of exports.
+   */
+  static createComponentExports(packageName, componentExports = {}, parent) {
+    const components = {};
+
+    Object.keys(componentExports).forEach((name) => {
+      const key = Plugins.key(packageName, name, parent);
+      const component = Component.create(packageName, name, componentExports[name]);
+
+      component.key = key;
+      component.parent = Plugins.key(packageName, parent);
+      component.exportType = ExportTypes.Export;
+
+      components[key] = component;
     });
 
     return components;
@@ -109,16 +138,16 @@ class Plugins {
     const config = {};
 
     plugins.forEach((plugin) => {
-      const { defaultExport, componentExports, customExports } = Plugins.config(plugin);
+      const { defaultExport, customExports } = Plugins.config(plugin);
 
       if (defaultExport) {
         // Convert the default export into a keyed object.
         const { name = Format.titleize(plugin) } = defaultExport;
         const defaultExportConfig = { [name]: defaultExport };
+
         Object.assign(config, Plugins.create(plugin, defaultExportConfig, ExportTypes.Default));
       }
 
-      Object.assign(config, Plugins.create(plugin, componentExports, ExportTypes.Export));
       Object.assign(config, Plugins.create(plugin, customExports, ExportTypes.Custom));
     });
 
@@ -161,18 +190,26 @@ class Plugins {
    * @param {Object} config - The entire configuration of generated plugins.
    */
   static writeFiles(config) {
+    const imports = new Set();
     Object.keys(config).forEach((key) => {
       const component = config[key];
 
-      const { packageName, name, parent } = component;
-      const { name: parentName } = config[parent] || {};
+      // eslint-disable-next-line object-curly-newline
+      const { importFrom, packageName, name, parent } = component;
+      const { name: parentName, importFrom: parentImport } = config[parent] || {};
+
+      imports.add(parentImport || importFrom);
 
       const destination = Plugins.destination(packageName, name, parentName);
 
       Plugins.writeFile(destination, component);
     });
 
-    Plugins.writeFile(`${process.cwd()}/src/plugins/plugins.json`, config, null);
+    const importMap = [...imports].map((key) => `  '${key}': () => import('${key}')`);
+    const importsFile = `export default {\n${importMap.join(',\n')},\n};\n`;
+
+    fs.writeFileSync(IMPORTS_FILE, importsFile);
+    Plugins.writeFile(PLUGINS_FILE, config, null);
   }
 }
 
