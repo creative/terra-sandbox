@@ -1,54 +1,35 @@
-import React, { useState } from 'react';
+/* eslint-disable react/forbid-prop-types */
+import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import plugins from '../../plugins/plugins';
-import imports from '../../plugins/imports';
+import Generator from '../../generator/generate';
 import styles from './Canvas.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Canvas = () => {
-  const [dropped, setDropped] = useState('Empty');
+const propTypes = {
   /**
-   * Handles the drag over event.
-   * @param {Event} event - The drag over event.
+   * The in-progress workspace design.
    */
-  const handleDragover = (event) => {
-    event.preventDefault();
-  };
-
+  workspace: PropTypes.object,
   /**
-   * Handles the drag enter event.
-   * @param {Event} event - The drag enter event.
+   * The available dynamic imports that have been loaded onto the page.
    */
-  const handleDragenter = (event) => {
-    event.preventDefault();
-  };
+  imports: PropTypes.object,
+};
 
-  /**
-   * Handles the drop event.
-   * @param {Event} event - The drop event.
-   */
-  const handleDrop = (event) => {
-    const sandboxData = event.dataTransfer.getData('terra-sandbox-data');
-
-    if (sandboxData) {
-      const { identifier } = JSON.parse(sandboxData);
-      const { importFrom } = plugins[identifier];
-
-      imports[importFrom]().then(() => {
-        setDropped(identifier);
-      }).catch((error) => {
-        // eslint-disable-next-line no-console
-        console.log(error);
-      });
-    }
-  };
+const Canvas = (props) => {
+  const { imports, workspace } = props;
 
   return (
-    <div className={cx('canvas')} onDragOver={handleDragover} onDragEnter={handleDragenter} onDrop={handleDrop}>
-      {dropped}
+    <div className={cx('canvas')}>
+      <div className={cx('body')}>
+        {Generator.generate(imports, workspace)}
+      </div>
     </div>
   );
 };
+
+Canvas.propTypes = propTypes;
 
 export default Canvas;
