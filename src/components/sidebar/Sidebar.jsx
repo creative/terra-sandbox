@@ -53,7 +53,7 @@ const Sidebar = () => {
   };
 
   return (
-  // eslint-disable-next-line react/forbid-dom-props
+    // eslint-disable-next-line react/forbid-dom-props
     <div className={cx('sidebar')} style={{ width: `${width}px` }}>
       <Catalog />
       <Layers />

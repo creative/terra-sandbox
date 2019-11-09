@@ -4,7 +4,8 @@ import plugins from '../plugins/plugins';
 class Generate {
   /**
    * Generates a workspace.
-   * @param {Object} - The workspace configuration.
+   * @param {Object} imports - The available dynamic imports that have been loaded onto the page.
+   * @param {Object} config - The workspace configuration.
    */
   static generate(imports, config) {
     const { root } = config;
@@ -15,6 +16,11 @@ class Generate {
     return <>{components}</>;
   }
 
+  /**
+   * Generates the component import reference.
+   * @param {Object} imports - The available dynamic imports that have been loaded onto the page.
+   * @param {Object} config - The component configuration.
+   */
   static import(imports, config) {
     const { name } = config;
 
@@ -31,6 +37,11 @@ class Generate {
     return undefined;
   }
 
+  /**
+   * Generates a component.
+   * @param {Object} imports - The available dynamic imports that have been loaded onto the page.
+   * @param {Object} config - The component configuration.
+   */
   static component(imports, config) {
     const { id, props } = config;
 
@@ -40,6 +51,10 @@ class Generate {
     return <Component key={id} id={id} {...properties} />;
   }
 
+  /**
+   * Generates a set of properties.
+   * @param {Object} properties - The component property configurations.
+   */
   static properties(properties) {
     const props = {};
 
@@ -54,6 +69,10 @@ class Generate {
     return props;
   }
 
+  /**
+   * Generates a property.
+   * @param {Object} property - The property to generate.
+   */
   static property(property) {
     const { type, value } = property;
 
