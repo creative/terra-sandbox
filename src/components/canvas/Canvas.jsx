@@ -11,11 +11,11 @@ const propTypes = {
   /**
    * The in-progress workspace design.
    */
-  workspace: PropTypes.object,
+  workspace: PropTypes.object.isRequired,
   /**
    * The available dynamic imports that have been loaded onto the page.
    */
-  imports: PropTypes.object,
+  imports: PropTypes.object.isRequired,
 };
 
 const Canvas = (props) => {
