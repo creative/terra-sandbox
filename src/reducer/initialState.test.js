@@ -12,7 +12,7 @@ describe('Initial State ', () => {
         id: 'mock-uuid',
         parent: 'root',
         name: 'terra-sandbox:Placeholder',
-        type: 'Component',
+        type: 'element',
         props: {
           expand: {
             type: 'Bool',

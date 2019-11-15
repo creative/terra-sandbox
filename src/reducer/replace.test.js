@@ -18,7 +18,7 @@ describe('Replace', () => {
           id: 'mock',
           parent: 'root',
           name: 'terra-sandbox:Placeholder',
-          type: 'Component',
+          type: 'element',
           props: {
             expand: {
               type: 'Bool',
@@ -36,7 +36,7 @@ describe('Replace', () => {
           id: 'mock',
           parent: 'root',
           name: 'terra-sandbox:Mock',
-          type: 'Component',
+          type: 'element',
           props: {},
         },
       },

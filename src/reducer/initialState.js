@@ -5,16 +5,17 @@ const initialUUID = uuidv4();
 
 const initialState = {
   workspace: {
-    root: [initialUUID],
-    [initialUUID]: {
-      id: initialUUID,
-      parent: 'root',
-      name: 'terra-sandbox:Placeholder',
-      type: 'Component',
-      props: {
-        expand: {
-          type: 'Bool',
-          value: true,
+    root: {
+      [initialUUID]: {
+        id: initialUUID,
+        parent: 'root',
+        name: 'terra-sandbox:Placeholder',
+        type: 'element',
+        props: {
+          expand: {
+            type: 'bool',
+            value: true,
+          },
         },
       },
     },
