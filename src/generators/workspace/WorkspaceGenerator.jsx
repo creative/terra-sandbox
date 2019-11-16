@@ -6,6 +6,7 @@ class WorkspaceGenerator {
    * Generates a workspace.
    * @param {Object} imports - The available dynamic imports that have been loaded onto the page.
    * @param {Object} config - The workspace configuration.
+   * @returns {ReactComponent} - A generated react component.
    */
   static generate(imports, config) {
     const { root } = config;
@@ -21,6 +22,7 @@ class WorkspaceGenerator {
    * Generates the component import reference.
    * @param {Object} imports - The available dynamic imports that have been loaded onto the page.
    * @param {Object} config - The component configuration.
+   * @returns {Object|undefined} - A reference to the import.
    */
   static import(imports, config) {
     const { name } = config;
@@ -42,6 +44,7 @@ class WorkspaceGenerator {
    * Generates a component.
    * @param {Object} imports - The available dynamic imports that have been loaded onto the page.
    * @param {Object} config - The component configuration.
+   * @return {ReactComponent} - A generated react component.
    */
   static component(imports, config) {
     const { id, props } = config;
@@ -55,6 +58,7 @@ class WorkspaceGenerator {
   /**
    * Generates a set of properties.
    * @param {Object} properties - The component property configurations.
+   * @returns {Object} - A set of generated properties.
    */
   static properties(imports, properties) {
     const props = {};
@@ -73,6 +77,7 @@ class WorkspaceGenerator {
   /**
    * Generates a property.
    * @param {Object} property - The property to generate.
+   * @returns {Object} - A generated property;
    */
   static property(imports, property) {
     const { type, value } = property;

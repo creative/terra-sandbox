@@ -13,16 +13,17 @@ describe('Replace', () => {
 
     const state = {
       workspace: {
-        root: ['mock'],
-        mock: {
-          id: 'mock',
-          parent: 'root',
-          name: 'terra-sandbox:Placeholder',
-          type: 'element',
-          props: {
-            expand: {
-              type: 'Bool',
-              value: true,
+        root: {
+          mock: {
+            id: 'mock',
+            parent: 'root',
+            name: 'terra-sandbox:Placeholder',
+            type: 'element',
+            props: {
+              expand: {
+                type: 'Bool',
+                value: true,
+              },
             },
           },
         },
@@ -31,13 +32,14 @@ describe('Replace', () => {
 
     const expected = {
       workspace: {
-        root: ['mock'],
-        mock: {
-          id: 'mock',
-          parent: 'root',
-          name: 'terra-sandbox:Mock',
-          type: 'element',
-          props: {},
+        root: {
+          mock: {
+            id: 'mock',
+            parent: 'root',
+            name: 'terra-sandbox:Mock',
+            type: 'element',
+            props: {},
+          },
         },
       },
     };
