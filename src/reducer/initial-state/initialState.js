@@ -1,5 +1,5 @@
 import uuidv4 from 'uuid/v4';
-import Placeholder from '../components/placeholder/Placeholder';
+import Placeholder from '../../components/placeholder/Placeholder';
 
 const initialUUID = uuidv4();
 
