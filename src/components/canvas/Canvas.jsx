@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import WorkspaceGenerator from '../../generators/workspace/WorkspaceGenerator';
+import WorkspaceGenerator from '../../generators/workspace/workspace-generator';
 import styles from './Canvas.module.scss';
 
 const cx = classNames.bind(styles);

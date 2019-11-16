@@ -1,6 +1,6 @@
 import plugins from '../plugins/plugins';
 import TreeParser from '../tree-parser/tree-parser';
-import ExampleGenerator from '../generators/example/ExampleGenerator';
+import ExampleGenerator from '../generators/example/example-generator';
 
 /**
  * Replaces a component with another component.

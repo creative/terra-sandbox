@@ -3,11 +3,11 @@ import plugins from '../../plugins/plugins';
 
 class ExampleGenerator {
   /**
-   * Generates a example for a component.
+   * Generates an example for a component.
    * @param {string} name - The component name.
-   * @param {string} id - The component identifier.
-   * @param {string} parent - The parent identifier.
-   * @returns {Object} - A generated react component represented as a Object.
+   * @param {string} id - An optional component identifier.
+   * @param {string} parent - An optional parent identifier.
+   * @returns {Object} - A generated react component represented as an object.
    */
   static generate(name, id, parent) {
     const identifier = id || uuidv4();
@@ -29,7 +29,7 @@ class ExampleGenerator {
    */
   static configuration(name) {
     if (name === 'terra-sandbox:Placeholder') {
-      return { props: { expand: { type: 'Bool' } } };
+      return { props: { expand: { type: 'bool' } } };
     }
 
     return plugins[name];
