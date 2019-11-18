@@ -1,5 +1,5 @@
-import replace from './replace';
-import initialState from './initialState';
+import replace from './replace/replace';
+import initialState from './initial-state/initialState';
 
 const reducer = (state, action) => {
   const { type } = action;

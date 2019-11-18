@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Canvas from './Canvas';
 
-jest.mock('../../generator/generate');
+jest.mock('../../generators/workspace/workspace-generator');
 
 describe('Canvas', () => {
   it('renders without crashing', () => {

@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-import replace from './replace';
+import replace from './replace/replace';
 import reducer, { initialState } from './reducer';
 
-jest.mock('./replace');
+jest.mock('./replace/replace');
 
 describe('Reducer', () => {
   beforeEach(() => {

@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import Generator from '../../generator/generate';
+import WorkspaceGenerator from '../../generators/workspace/workspace-generator';
 import styles from './Canvas.module.scss';
 
 const cx = classNames.bind(styles);
@@ -24,7 +24,7 @@ const Canvas = (props) => {
   return (
     <div className={cx('canvas')}>
       <div className={cx('body')}>
-        {Generator.generate(imports, workspace)}
+        {WorkspaceGenerator.generate(imports, workspace)}
       </div>
     </div>
   );

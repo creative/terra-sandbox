@@ -7,16 +7,17 @@ describe('Initial State ', () => {
     const { workspace } = initialState;
 
     const expected = {
-      root: ['mock-uuid'],
-      'mock-uuid': {
-        id: 'mock-uuid',
-        parent: 'root',
-        name: 'terra-sandbox:Placeholder',
-        type: 'Component',
-        props: {
-          expand: {
-            type: 'Bool',
-            value: true,
+      root: {
+        'mock-uuid': {
+          id: 'mock-uuid',
+          parent: 'root',
+          name: 'terra-sandbox:Placeholder',
+          type: 'element',
+          props: {
+            expand: {
+              type: 'bool',
+              value: true,
+            },
           },
         },
       },
