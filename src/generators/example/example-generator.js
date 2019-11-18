@@ -18,7 +18,7 @@ class ExampleGenerator {
       parent,
       name,
       type: 'element',
-      props: ExampleGenerator.properties(id, props),
+      props: ExampleGenerator.properties(identifier, props),
     };
   }
 

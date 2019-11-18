@@ -3,13 +3,34 @@ import ExampleGenerator from '../../generators/example/example-generator';
 import TreeParser from '../../tree-parser/tree-parser';
 
 jest.mock('uuid/v4', () => () => 'mock-uuid');
+jest.mock('../../plugins/plugins', () => ({
+  'terra-sandbox:Mock': {
+    packageName: 'terra-sandbox',
+    name: 'Mock',
+    version: '1.0.0',
+    importFrom: 'terra-sandbox',
+    props: {
+      children: {
+        type: 'node',
+      },
+    },
+  },
+}));
 
 describe('Replace', () => {
+  beforeEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
   it('should replace a component', () => {
     jest.spyOn(TreeParser, 'replace');
     jest.spyOn(ExampleGenerator, 'generate');
 
-    const action = { id: 'mock', replacement: 'terra-card:Card' };
+    const action = { id: 'mock', replacement: 'terra-sandbox:Mock' };
 
     const state = {
       workspace: {
@@ -35,7 +56,7 @@ describe('Replace', () => {
         root: {
           mock: {
             id: 'mock',
-            name: 'terra-card:Card',
+            name: 'terra-sandbox:Mock',
             parent: 'root',
             type: 'element',
             props: {
@@ -59,7 +80,7 @@ describe('Replace', () => {
 
     const result = replace(state, action);
 
-    expect(ExampleGenerator.generate).toHaveBeenCalledWith('terra-card:Card', 'mock');
+    expect(ExampleGenerator.generate).toHaveBeenCalledWith('terra-sandbox:Mock', 'mock');
     expect(TreeParser.replace).toHaveBeenCalledWith(state.workspace.root, action.id, expect.any(Object));
     expect(result).toEqual(expected);
   });
@@ -68,7 +89,7 @@ describe('Replace', () => {
     jest.spyOn(TreeParser, 'replace').mockImplementationOnce(() => { });
     jest.spyOn(ExampleGenerator, 'generate').mockImplementationOnce(() => { });
 
-    const action = { id: 'mock', replacement: 'terra-card:Card', dynamicImport: 'terra-card' };
+    const action = { id: 'mock', replacement: 'terra-sandbox:Mock', dynamicImport: 'terra-sandbox' };
 
     const state = {
       imports: {
@@ -81,7 +102,7 @@ describe('Replace', () => {
       },
     };
 
-    const expected = { default: 'default-import', 'terra-card': 'terra-card' };
+    const expected = { default: 'default-import', 'terra-sandbox': 'terra-sandbox' };
 
     const { imports } = replace(state, action);
 
