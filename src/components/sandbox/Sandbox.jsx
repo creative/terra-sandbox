@@ -13,7 +13,7 @@ const cx = classNames.bind(styles);
 
 const Sandbox = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { imports, workspace } = state;
+  const { imports, selected, workspace } = state;
 
   return (
     <Base locale="en">
@@ -25,7 +25,7 @@ const Sandbox = () => {
           <DispatchContext.Provider value={dispatch}>
             <Sidebar />
             <Canvas imports={imports} workspace={workspace} />
-            <Editor />
+            <Editor selected={selected} />
           </DispatchContext.Provider>
         </div>
       </div>

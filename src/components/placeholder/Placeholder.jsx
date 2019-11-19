@@ -69,6 +69,7 @@ const Placeholder = (props) => {
 
   return (
     <div
+      id={id}
       className={cx('placeholder', { expand })}
       onDragOver={handleDragover}
       onDragEnter={handleDragenter}

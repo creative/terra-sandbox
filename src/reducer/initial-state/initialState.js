@@ -4,6 +4,10 @@ import Placeholder from '../../components/placeholder/Placeholder';
 const initialUUID = uuidv4();
 
 const initialState = {
+  imports: {
+    'terra-sandbox:Placeholder': Placeholder,
+  },
+  selected: undefined,
   workspace: {
     root: {
       [initialUUID]: {
@@ -19,9 +23,6 @@ const initialState = {
         },
       },
     },
-  },
-  imports: {
-    'terra-sandbox:Placeholder': Placeholder,
   },
 };
 
