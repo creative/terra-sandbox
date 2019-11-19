@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/terra-sandbox/precache-manifest.91162e8456ac50d17424bc1e7df34da1.js"
+  "/terra-sandbox/precache-manifest.6a56574051db176e942d4290e41841ac.js"
 );
 
 self.addEventListener('message', (event) => {
