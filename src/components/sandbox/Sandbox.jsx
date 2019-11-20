@@ -23,9 +23,9 @@ const Sandbox = () => {
         </div>
         <div className={cx('layout')}>
           <DispatchContext.Provider value={dispatch}>
-            <Sidebar />
+            <Sidebar selected={selected} workspace={workspace} />
             <Canvas imports={imports} workspace={workspace} />
-            <Editor selected={selected} />
+            <Editor selected={selected} workspace={workspace} />
           </DispatchContext.Provider>
         </div>
       </div>

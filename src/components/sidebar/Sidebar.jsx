@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import Catalog from '../catalog/Catalog';
 import Layers from '../layers/Layers';
@@ -6,8 +7,21 @@ import styles from './Sidebar.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Sidebar = () => {
-  const [width, setWidth] = useState(230);
+const propTypes = {
+  /**
+   * The identifier of the selected component.
+   */
+  selected: PropTypes.string,
+  /**
+   * The in-progress workspace design.
+   */
+  workspace: PropTypes.object.isRequired,
+};
+
+const Sidebar = (props) => {
+  const { selected, workspace } = props;
+
+  const sidebar = useRef();
 
   /**
    * Modifies the sidebar width as the mouse moves.
@@ -16,7 +30,7 @@ const Sidebar = () => {
   const handleMouseMove = (event) => {
     const { clientX } = event;
 
-    setWidth(clientX);
+    sidebar.current.style.width = `${clientX}px`;
   };
 
   /**
@@ -54,12 +68,14 @@ const Sidebar = () => {
 
   return (
     // eslint-disable-next-line react/forbid-dom-props
-    <div className={cx('sidebar')} style={{ width: `${width}px` }}>
+    <div className={cx('sidebar')} ref={sidebar}>
       <Catalog />
-      <Layers />
+      <Layers selected={selected} workspace={workspace} />
       <div className={cx('resizer')} onMouseDown={handleMouseDown} role="presentation" />
     </div>
   );
 };
+
+Sidebar.propTypes = propTypes;
 
 export default Sidebar;
