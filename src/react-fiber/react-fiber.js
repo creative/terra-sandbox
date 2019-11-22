@@ -5,8 +5,8 @@ class Fiber {
    * @returns {string|null} - The key of the nearest component. Null if not found.
    */
   static findNearest(node) {
-    if (node.id === 'root') {
-      return node.id;
+    if (node.dataset.terraSandboxRoot) {
+      return 'root';
     }
 
     let target = Fiber.fiberNode(node);

@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
@@ -47,7 +46,7 @@ const Canvas = (props) => {
 
   return (
     <div className={cx('canvas')}>
-      <div className={cx('body')} id="root">
+      <div className={cx('body')} data-terra-sandbox-root>
         {WorkspaceGenerator.generate(imports, workspace)}
       </div>
     </div>

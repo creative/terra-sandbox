@@ -1,20 +1,33 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import Tree from '../tree/Tree';
 import styles from './Layers.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Layers = () => {
-  const [height, setHeight] = useState('40%');
+const propTypes = {
+  /**
+   * The identifier of the selected component.
+   */
+  selected: PropTypes.string,
+  /**
+   * The in-progress workspace design.
+   */
+  workspace: PropTypes.object.isRequired,
+};
+
+const Layers = (props) => {
+  const { selected, workspace } = props;
+
+  const container = useRef();
 
   /**
    * Modifies the layers height as the mouse moves.
    * @param {event} event - The mouse move event.
    */
   const handleMouseMove = (event) => {
-    const { clientY } = event;
-
-    setHeight(`${window.innerHeight - clientY}px`);
+    container.current.style.height = `${window.innerHeight - event.clientY}px`;
   };
 
   /**
@@ -50,13 +63,16 @@ const Layers = () => {
 
   return (
     // eslint-disable-next-line react/forbid-dom-props
-    <div className={cx('layers')} style={{ height }}>
+    <div className={cx('layers')} ref={container}>
       <div className={cx('header')} onMouseDown={handleMouseDown} role="presentation">
         <div className={cx('resizer')} />
         Layers
       </div>
+      <Tree workspace={workspace} selected={selected} />
     </div>
   );
 };
+
+Layers.propTypes = propTypes;
 
 export default Layers;
