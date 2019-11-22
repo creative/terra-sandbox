@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Sidebar from './Sidebar';
+import Tree from './Tree';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<Sidebar workspace={{ root: {} }} />, div);
+  ReactDOM.render(<Tree workspace={{ root: {} }} />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

@@ -66,7 +66,7 @@ const Layers = (props) => {
     <div className={cx('layers')} ref={container}>
       <div className={cx('header')} onMouseDown={handleMouseDown} role="presentation">
         <div className={cx('resizer')} />
-        Layers Selected:
+        Layers
       </div>
       <Tree workspace={workspace} selected={selected} />
     </div>

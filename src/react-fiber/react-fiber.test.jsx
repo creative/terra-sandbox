@@ -22,7 +22,7 @@ describe('React Fiber', () => {
     });
 
     it('should return root if root the starting node', () => {
-      const { getByText } = render(<div id="root">Workspace</div>);
+      const { getByText } = render(<div data-terra-sandbox-root>Workspace</div>);
 
       const start = getByText('Workspace');
       const key = Fiber.findNearest(start);

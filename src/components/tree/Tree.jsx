@@ -3,17 +3,13 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   /**
-   * The identifier of the selected component.
-   */
-  selected: PropTypes.string,
-  /**
    * The in-progress workspace design.
    */
   workspace: PropTypes.object.isRequired,
 };
 
 const Tree = (props) => {
-  const { selected, workspace } = props;
+  const { workspace } = props;
   const { root } = workspace;
 
   const createTree = (component, depth = 0) => {
