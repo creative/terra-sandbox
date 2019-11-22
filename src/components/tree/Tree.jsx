@@ -39,7 +39,7 @@ const Tree = (props) => {
 
   return (
     <>
-      <div>Workspace</div>
+      <div data-terra-sandbox-root>Workspace</div>
       {Object.keys(root).map(key => createTree(root[key], 1))}
     </>
   );
