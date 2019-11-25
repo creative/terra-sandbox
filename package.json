@@ -2,7 +2,6 @@
   "name": "@creative/terra-sandbox",
   "version": "0.0.0",
   "description": "A drag and drop sandbox for terra-ui components",
-  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/creative/terra-sandbox.git"
