@@ -22,15 +22,24 @@ const Sidebar = (props) => {
   const { selected, workspace } = props;
 
   const sidebar = useRef();
+  const bottomSection = useRef();
 
   /**
-   * Modifies the sidebar width as the mouse moves.
+   * Modifies the sidebar width as the mouse moves horizontally.
    * @param {event} event - The mouse move event.
    */
-  const handleMouseMove = (event) => {
+  const handleMouseMoveHorizontal = (event) => {
     const { clientX } = event;
 
     sidebar.current.style.width = `${clientX}px`;
+  };
+
+  /**
+   * Modifies the layers height as the mouse moves vertically.
+   * @param {event} event - The mouse move event.
+   */
+  const handleMouseMoveVertical = (event) => {
+    bottomSection.current.style.height = `${window.innerHeight - event.clientY}px`;
   };
 
   /**
@@ -41,7 +50,8 @@ const Sidebar = (props) => {
     document.body.classList.remove(cx('inactive'));
     document.documentElement.style.cursor = '';
 
-    window.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('mousemove', handleMouseMoveHorizontal);
+    window.removeEventListener('mousemove', handleMouseMoveVertical);
     window.removeEventListener('mouseup', handleMouseUp);
   };
 
@@ -49,7 +59,7 @@ const Sidebar = (props) => {
    * Initializes listeners for resizing the sidebar.
    * @param {event} event - The mouse down event.
    */
-  const handleMouseDown = (event) => {
+  const handleMouseDownHorizontal = (event) => {
     // Only accept left mouse clicks.
     if (event.button > 1) {
       return;
@@ -62,16 +72,48 @@ const Sidebar = (props) => {
     // Disable user selection and pointer events to prevent interference during resizing.
     document.body.className += cx('inactive');
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMoveHorizontal);
+    window.addEventListener('mouseup', handleMouseUp);
+  };
+
+  /**
+   * Initializes listeners for resizing the bottom section vertically.
+   * @param {event} event - The mouse down event.
+   */
+  const handleMouseDownVertical = (event) => {
+    // Only accept left mouse clicks.
+    if (event.button > 1) {
+      return;
+    }
+
+    document.documentElement.style.cursor = 'ns-resize';
+
+    // Disable user selection and pointer events to prevent interference during resizing.
+    document.body.className += cx('inactive');
+
+    window.addEventListener('mousemove', handleMouseMoveVertical);
     window.addEventListener('mouseup', handleMouseUp);
   };
 
   return (
     // eslint-disable-next-line react/forbid-dom-props
     <div className={cx('sidebar')} ref={sidebar}>
-      <Catalog />
-      <Layers selected={selected} workspace={workspace} />
-      <div className={cx('resizer')} onMouseDown={handleMouseDown} role="presentation" />
+      <div className={cx('content')}>
+        <div className={cx('top-section')}>
+          <div className={cx('header')}>
+            Component
+          </div>
+          <Catalog />
+        </div>
+        <div className={(cx('bottom-section'))} ref={bottomSection}>
+          <div className={cx('header')}>
+            <div className={cx('vertical-resizer')} onMouseDown={handleMouseDownVertical} role="presentation" />
+            Layers
+          </div>
+          <Layers selected={selected} workspace={workspace} />
+        </div>
+      </div>
+      <div className={cx('horizontal-resizer')} onMouseDown={handleMouseDownHorizontal} role="presentation" />
     </div>
   );
 };

@@ -33,16 +33,13 @@ const Catalog = () => {
 
   return (
     <div className={cx('catalog')}>
-      <div>Components</div>
-      <div className={cx('search')}>
-        <input
-          className={cx('input')}
-          onChange={handleChange}
-          placeholder="Search Components"
-          type="Search"
-          value={searchValue}
-        />
-      </div>
+      <input
+        className={cx('input')}
+        onChange={handleChange}
+        placeholder="Search Components"
+        type="Search"
+        value={searchValue}
+      />
       <div className={cx('components')}>
         {components}
       </div>
