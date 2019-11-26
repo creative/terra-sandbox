@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    min-height: 0;
     overflow: hidden;
     padding: 0.35714285714285715rem;
   }
@@ -17,7 +16,6 @@
   .components {
     flex: 1 1 auto;
     height: 100%;
-    min-height: 50px;
     overflow: auto;
   }
 }
