@@ -1,23 +1,21 @@
 :local {
   .catalog {
-    border-bottom: 3px dashed #787575;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    flex-shrink: 1;
+    height: 100%;
     overflow: hidden;
-  }
-
-  .search {
     padding: 0.35714285714285715rem;
   }
 
   .input {
     border-radius: 3px;
+    flex: 0 0 auto;
     width: 100%;
   }
 
   .components {
+    flex: 1 1 auto;
+    height: 100%;
     overflow: auto;
   }
 }

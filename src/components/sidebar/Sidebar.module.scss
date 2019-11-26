@@ -1,26 +1,56 @@
 :local {
   .sidebar {
-    border: 3px dashed #787575; // Temporary border to demo layout. TODO: Remove.
-    border-top: 0; // Temporary border to demo layout. TODO: Remove.
+    border-bottom: 3px dashed #787575;
+    border-left: 3px dashed #787575;
     display: flex;
-    flex-direction: column;
-    flex-grow: 0;
     flex-shrink: 0;
     height: 100%;
     max-width: 75%;
     min-width: 100px;
     overflow: hidden;
-    position: relative;
+    user-select: none;
     width: 230px;
   }
 
-  .resizer {
+  .content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  .top-section {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .header {
+    flex: 0 0 auto;
+  }
+
+  .bottom-section {
+    flex-shrink: 0;
+    height: 40%;
+    min-height: 36px;
+    overflow: hidden;
+  }
+
+  .horizontal-resizer {
+    background-color: #787575;
     cursor: ew-resize;
     height: 100%;
-    margin-right: -0.8571428571428571rem;
-    position: absolute;
-    right: 0;
-    width: 1.4285714285714286rem;
+    width: 3px;
+  }
+
+  .vertical-resizer {
+    background-color: #787575;
+    cursor: ns-resize;
+    height: 3px;
+    width: 100%;
   }
 
   .inactive {

@@ -1,21 +1,5 @@
 :local {
   .layers {
-    flex-shrink: 0;
-    height: 40%;
-    min-height: 36px;
     overflow: hidden;
-  }
-
-  .resizer {
-    cursor: ns-resize;
-    height: 1.4285714285714286rem;
-    margin-top: -0.8571428571428571rem;
-    position: absolute;
-    width: 100%;
-  }
-
-  .inactive {
-    pointer-events: none;
-    user-select: none;
   }
 }
