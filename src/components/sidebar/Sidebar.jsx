@@ -101,7 +101,7 @@ const Sidebar = (props) => {
       <div className={cx('content')}>
         <div className={cx('top-section')}>
           <div className={cx('header')}>
-            Component
+            Components
           </div>
           <Catalog />
         </div>

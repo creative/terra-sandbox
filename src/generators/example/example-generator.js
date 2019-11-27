@@ -45,11 +45,7 @@ class ExampleGenerator {
     const props = {};
 
     Object.keys(properties).forEach((property) => {
-      const value = ExampleGenerator.property(id, properties[property]);
-
-      if (value !== undefined && value !== null) {
-        props[property] = value;
-      }
+      props[property] = ExampleGenerator.property(id, properties[property]);
     });
 
     return props;
@@ -74,7 +70,7 @@ class ExampleGenerator {
       return { type: 'node', value: { [example.id]: example } };
     }
 
-    return undefined;
+    return { type, value: undefined };
   }
 }
 

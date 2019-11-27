@@ -82,7 +82,11 @@ class WorkspaceGenerator {
   static property(imports, property) {
     const { type, value } = property;
 
-    if (type === 'bool') {
+    if (value === undefined) {
+      return undefined;
+    }
+
+    if (type === 'bool' || type === 'string') {
       return value;
     }
 

@@ -4,6 +4,7 @@
     border-top: 0; // Temporary border to demo layout. TODO: Remove.
     display: flex;
     flex: 0 0 230px;
+    flex-direction: column;
     height: 100%;
   }
 }
