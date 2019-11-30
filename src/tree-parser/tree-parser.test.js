@@ -8,45 +8,10 @@ describe('Tree Parser', () => {
       const root = {
         mock1: {
           id: 'mock1',
-          props: {
-            children: {
-              type: 'node',
-              value: {
-                mock3: {
-                  id: 'mock3',
-                  parent: 'mock1',
-                  props: {},
-                },
-              },
-            },
-          },
-        },
-        mock2: {
-          id: 'mock2',
-          props: {
-            children: {
-              type: 'element',
-              value: {
-                id: 'mock4',
-                parent: 'mock2',
-                props: {},
-              },
-            },
-          },
-        },
-      };
-
-      const replacement = {
-        name: 'replacement',
-        props: { prop1: { type: 'bool' } },
-      };
-
-      const result = TreeParser.replace(root, 'mock3', replacement);
-
-      const expected = {
-        root: {
-          mock1: {
-            id: 'mock1',
+          parent: 'root',
+          type: 'element',
+          value: {
+            name: 'terra-sandbox:MockExample',
             props: {
               children: {
                 type: 'node',
@@ -54,16 +19,22 @@ describe('Tree Parser', () => {
                   mock3: {
                     id: 'mock3',
                     parent: 'mock1',
-                    name: 'replacement',
                     type: 'element',
-                    props: { prop1: { type: 'bool' } },
+                    value: {
+                      props: {},
+                    },
                   },
                 },
               },
             },
           },
-          mock2: {
-            id: 'mock2',
+        },
+        mock2: {
+          id: 'mock2',
+          parent: 'root',
+          type: 'element',
+          value: {
+            name: 'terra-sandbox:MockExample',
             props: {
               children: {
                 type: 'element',
@@ -78,47 +49,94 @@ describe('Tree Parser', () => {
         },
       };
 
+      const replacement = {
+        id: 'mock-replacement',
+        type: 'element',
+        value: {
+          name: 'terra-sandbox:MockReplacement',
+          props: {
+            prop1: {
+              type: 'bool',
+            },
+          },
+        },
+      };
+
+      const result = TreeParser.replace(root, 'mock3', replacement);
+      console.log(JSON.stringify(result, null, 2));
+
+      const expected = {
+        root: {
+          mock1: {
+            id: 'mock1',
+            parent: 'root',
+            type: 'element',
+            value: {
+              name: 'terra-sandbox:MockExample',
+              props: {
+                children: {
+                  type: 'node',
+                  value: {
+                    mock3: {
+                      id: 'mock-replacement',
+                      type: 'element',
+                      value: {
+                        name: 'terra-sandbox:MockReplacement',
+                        props: {
+                          prop1: {
+                            type: 'bool',
+                          },
+                        },
+                      },
+                      parent: 'mock1',
+                    },
+                  },
+                },
+              },
+            },
+          },
+          mock2: {
+            id: 'mock2',
+            parent: 'root',
+            type: 'element',
+            value: {
+              name: 'terra-sandbox:MockExample',
+              props: {
+                children: {
+                  type: 'element',
+                  value: {
+                    props: {},
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+
       expect(result).toEqual(expected);
     });
   });
 
-  describe('replaceNode', () => {
+  describe('replaceTarget', () => {
     it('should replace a node', () => {
-      const node = { id: 'mock-target-id', parent: 'mock1', props: {} };
+      const node = { id: 'mock-target-id', type: 'element', parent: 'mock1', value: { name: 'terra-sandbox:Mock', props: {} } };
+      const replacement = { id: 'mock-replacement-id', type: 'element', value: { name: 'mock-name', props: { prop1: { type: 'bool' } } } };
 
-      const replacement = { name: 'mock-name', props: { prop1: { type: 'bool' } } };
-
-      const result = TreeParser.replaceNode(node, 'mock-target-id', replacement);
-
-      const expected = {
-        name: 'mock-name',
-        id: 'mock-target-id',
-        parent: 'mock1',
-        type: 'element',
-        props: { prop1: { type: 'bool' } },
-      };
-
-      expect(result).toEqual(expected);
-    });
-  });
-
-  describe('clone', () => {
-    it('should clone a node with a specified parent and identifier', () => {
-      const node = {
-        id: 'mock-target-id',
-        parent: 'mock1',
-        name: 'mock-name',
-        props: {},
-      };
-
-      const result = TreeParser.clone(node, 'parent-id', 'mock-id');
+      const result = TreeParser.replaceTarget(node, 'mock-target-id', replacement);
 
       const expected = {
-        name: 'mock-name',
-        id: 'mock-id',
-        parent: 'parent-id',
+        id: 'mock-replacement-id',
+        parent: 'mock1',
         type: 'element',
-        props: {},
+        value: {
+          name: 'mock-name',
+          props: {
+            prop1: {
+              type: 'bool',
+            },
+          },
+        },
       };
 
       expect(result).toEqual(expected);

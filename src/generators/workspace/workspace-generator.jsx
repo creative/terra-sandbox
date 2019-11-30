@@ -11,9 +11,15 @@ class WorkspaceGenerator {
   static generate(imports, config) {
     const { root } = config;
 
-    const components = Object.keys(root).map((component) => (
-      WorkspaceGenerator.component(imports, root[component])
-    ));
+    const components = Object.keys(root).map((key) => {
+      const { type, value } = root[key];
+
+      if (type === 'element') {
+        return WorkspaceGenerator.component(imports, root[key]);
+      }
+
+      return value;
+    });
 
     return <>{components}</>;
   }
@@ -47,9 +53,10 @@ class WorkspaceGenerator {
    * @return {ReactComponent} - A generated react component.
    */
   static component(imports, config) {
-    const { id, props } = config;
+    const { id, value } = config;
+    const { props } = value;
 
-    const Component = WorkspaceGenerator.import(imports, config);
+    const Component = WorkspaceGenerator.import(imports, value);
     const properties = WorkspaceGenerator.properties(imports, props);
 
     return <Component key={id} id={id} {...properties} />;
@@ -82,8 +89,8 @@ class WorkspaceGenerator {
   static property(imports, property) {
     const { type, value } = property;
 
-    if (type === 'bool') {
-      return value;
+    if (value === undefined) {
+      return undefined;
     }
 
     if (type === 'node') {
@@ -91,13 +98,10 @@ class WorkspaceGenerator {
     }
 
     if (type === 'element') {
-      return WorkspaceGenerator.generate(imports, property);
+      return WorkspaceGenerator.component(imports, property);
     }
 
-    // eslint-disable-next-line no-console
-    console.log(`WARNING: Unable to interpret property. ${JSON.stringify(property)}`);
-
-    return undefined;
+    return value;
   }
 }
 

@@ -1,5 +1,3 @@
-import uuidv4 from 'uuid/v4';
-
 class TreeParser {
   /**
    * Replaces a target within the tree.
@@ -11,86 +9,71 @@ class TreeParser {
     const tree = {};
 
     Object.keys(root).forEach((node) => {
-      tree[node] = TreeParser.replaceNode(root[node], target, replacement);
+      tree[node] = TreeParser.replaceTarget(root[node], target, replacement);
     });
 
     return { root: tree };
   }
 
   /**
-   * Replaces a node within a tree.
+   * Replaces a target node within a tree.
    * @param {Object} node - The current node.
    * @param {string} target - The target identifier.
    * @param {Object} replacement - The replacement node.
    */
-  static replaceNode(node, target, replacement) {
-    const { id, parent, props } = node;
+  static replaceTarget(node, target, replacement) {
+    const { id, parent, type } = node;
 
     if (id === target) {
-      return TreeParser.clone(replacement, parent, id);
+      return { ...replacement, parent };
     }
 
-    const properties = {};
+    if (type === 'element') {
+      return TreeParser.replaceElement(node, target, replacement);
+    }
 
-    Object.keys(props).forEach((property) => {
-      const { type, value } = props[property];
+    if (type === 'node') {
+      return TreeParser.replaceNode(node, target, replacement);
+    }
 
-      if (type === 'element') {
-        properties[property] = { type, value: TreeParser.replaceNode(value, target, replacement) };
-      } else if (type === 'node') {
-        const nodes = {};
-
-        Object.keys(value).forEach((key) => {
-          nodes[key] = TreeParser.replaceNode(value[key], target, replacement);
-        });
-
-        properties[property] = { type, value: nodes };
-      } else {
-        properties[property] = props[property];
-      }
-    });
-
-    return { ...node, props: properties };
+    return node;
   }
 
   /**
-   * Clones a provided node.
-   * @param {Object} node - The node to clone.
-   * @param {string} parent - Optional parent identifier to assign the node.
-   * @param {string} identifier - Optional identifier to assign the node.
+   * Replaces an element node within a tree.
+   * @param {Object} node - The element node.
+   * @param {string} target - The target identifier.
+   * @param {Object} replacement - The replacement node.
    */
-  static clone(node, parent, identifier) {
-    const id = identifier || uuidv4();
-
-    const { name, props } = node;
+  static replaceElement(node, target, replacement) {
+    const { id, parent, type, value } = node;
+    const { name, props } = value;
 
     const properties = {};
 
     Object.keys(props).forEach((prop) => {
-      const { type, value } = props[prop];
-
-      if (type === 'element') {
-        properties[prop] = { type, value: TreeParser.clone(value, id) };
-      } else if (type === 'node') {
-        const nodes = {};
-
-        Object.keys(value).forEach((key) => {
-          nodes[key] = TreeParser.clone(value[key], id);
-        });
-
-        properties[prop] = { type, value: nodes };
-      } else {
-        properties[prop] = props[prop];
-      }
+      properties[prop] = TreeParser.replaceTarget(props[prop], target, replacement);
     });
 
-    return {
-      id,
-      name,
-      parent,
-      type: 'element',
-      props: properties,
-    };
+    return { id, parent, type, value: { name, props: properties } };
+  }
+
+  /**
+   * Replaces a node node within a tree.
+   * @param {Object} node - The element node.
+   * @param {string} target - The target identifier.
+   * @param {Object} replacement - The replacement node.
+   */
+  static replaceNode(node, target, replacement) {
+    const { id, parent, type, value } = node;
+
+    const nodes = {};
+
+    Object.keys(value).forEach((key) => {
+      nodes[key] = TreeParser.replaceTarget(value[key], target, replacement);
+    });
+
+    return { id, parent, type, value: nodes };
   }
 }
 

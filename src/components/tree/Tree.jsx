@@ -12,21 +12,22 @@ const Tree = (props) => {
   const { workspace } = props;
   const { root } = workspace;
 
-  const createTree = (component, depth = 0) => {
-    const { id, props: properties, name } = component;
+  const createTree = (node, depth = 0) => {
+    const { id, value } = node;
+    const { props: properties, name } = value;
 
     // eslint-disable-next-line react/forbid-dom-props
     const nodes = [<div key={id} style={{ paddingLeft: `${depth * 15}px` }}>{name.split(':').pop()}</div>];
 
     Object.keys(properties).forEach((property) => {
-      const { type, value } = properties[property];
+      const { type, value: propertyValue } = properties[property];
 
       if (type === 'node') {
-        nodes.push(Object.keys(value).map((node) => createTree(value[node], depth + 1)));
+        nodes.push(Object.keys(propertyValue).map((key) => createTree(propertyValue[key], depth + 1)));
       }
 
       if (type === 'element') {
-        nodes.push(createTree(value, depth + 1));
+        nodes.push(createTree(properties[property], depth + 1));
       }
     });
 
@@ -36,7 +37,7 @@ const Tree = (props) => {
   return (
     <>
       <div data-terra-sandbox-root>Workspace</div>
-      {Object.keys(root).map(key => createTree(root[key], 1))}
+      {Object.keys(root).map((key) => createTree(root[key], 1))}
     </>
   );
 };

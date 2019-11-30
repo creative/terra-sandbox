@@ -30,7 +30,7 @@ describe('Replace', () => {
     jest.spyOn(TreeParser, 'replace');
     jest.spyOn(ExampleGenerator, 'generate');
 
-    const action = { id: 'mock', replacement: 'terra-sandbox:Mock' };
+    const action = { id: 'mock', replacement: { name: 'terra-sandbox:Mock', type: 'element' } };
 
     const state = {
       workspace: {
@@ -38,12 +38,14 @@ describe('Replace', () => {
           mock: {
             id: 'mock',
             parent: 'root',
-            name: 'terra-sandbox:Placeholder',
             type: 'element',
-            props: {
-              expand: {
-                type: 'Bool',
-                value: true,
+            value: {
+              name: 'terra-sandbox:Placeholder',
+              props: {
+                expand: {
+                  type: 'bool',
+                  value: true,
+                },
               },
             },
           },
@@ -55,20 +57,29 @@ describe('Replace', () => {
       workspace: {
         root: {
           mock: {
-            id: 'mock',
-            name: 'terra-sandbox:Mock',
+            id: 'mock-uuid',
             parent: 'root',
             type: 'element',
-            props: {
-              children: {
-                type: 'node',
-                value: {
-                  'mock-uuid': {
-                    id: 'mock-uuid',
-                    name: 'terra-sandbox:Placeholder',
-                    parent: 'mock',
-                    type: 'element',
-                    props: {},
+            value: {
+              name: 'terra-sandbox:Mock',
+              props: {
+                children: {
+                  type: 'node',
+                  value: {
+                    'mock-uuid': {
+                      id: 'mock-uuid',
+                      parent: 'mock-uuid',
+                      type: 'element',
+                      value: {
+                        name: 'terra-sandbox:Placeholder',
+                        props: {
+                          expand: {
+                            type: 'bool',
+                            value: undefined,
+                          },
+                        },
+                      },
+                    },
                   },
                 },
               },
@@ -80,7 +91,7 @@ describe('Replace', () => {
 
     const result = replace(state, action);
 
-    expect(ExampleGenerator.generate).toHaveBeenCalledWith('terra-sandbox:Mock', 'mock');
+    expect(ExampleGenerator.generate).toHaveBeenCalledWith({ name: 'terra-sandbox:Mock', type: 'element' });
     expect(TreeParser.replace).toHaveBeenCalledWith(state.workspace.root, action.id, expect.any(Object));
     expect(result).toEqual(expected);
   });
@@ -89,7 +100,7 @@ describe('Replace', () => {
     jest.spyOn(TreeParser, 'replace').mockImplementationOnce(() => { });
     jest.spyOn(ExampleGenerator, 'generate').mockImplementationOnce(() => { });
 
-    const action = { id: 'mock', replacement: 'terra-sandbox:Mock', dynamicImport: 'terra-sandbox' };
+    const action = { id: 'mock', replacement: { name: 'terra-sandbox:Mock', type: 'element' }, dynamicImport: 'terra-sandbox' };
 
     const state = {
       imports: {

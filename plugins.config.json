@@ -1,5 +1,6 @@
 {
   "plugins": [
+    "terra-button",
     "terra-card",
     "terra-content-container",
     "terra-list",

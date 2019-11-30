@@ -13,12 +13,14 @@ const replace = (state, action) => {
   const { id, replacement, dynamicImport } = action;
 
   // Preserve the existing ID for replacements.
-  const component = ExampleGenerator.generate(replacement, id);
+  const component = ExampleGenerator.generate(replacement);
   const tree = TreeParser.replace(root, id, component);
 
   // Replace actions may optionally introduce a new dynamic import.
   if (dynamicImport) {
-    const { importFrom } = plugins[replacement];
+    const { name } = replacement;
+    const { importFrom } = plugins[name];
+
     imports[importFrom] = dynamicImport;
   }
 

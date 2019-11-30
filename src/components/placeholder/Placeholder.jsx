@@ -53,12 +53,9 @@ const Placeholder = (props) => {
       const { importFrom } = plugins[identifier];
 
       imports[importFrom]().then((dynamicImport) => {
-        dispatch({
-          id,
-          dynamicImport,
-          type: 'replace',
-          replacement: identifier,
-        });
+        const replacement = { name: identifier, type: 'element' };
+
+        dispatch({ id, dynamicImport, replacement, type: 'replace' });
       }).catch((error) => {
         // eslint-disable-next-line no-console
         console.log(error);
