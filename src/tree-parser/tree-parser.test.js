@@ -63,7 +63,6 @@ describe('Tree Parser', () => {
       };
 
       const result = TreeParser.replace(root, 'mock3', replacement);
-      console.log(JSON.stringify(result, null, 2));
 
       const expected = {
         root: {
