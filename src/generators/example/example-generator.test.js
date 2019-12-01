@@ -25,64 +25,51 @@ describe('Example Generator', () => {
 
   describe('generate', () => {
     it('should generate a placeholder example', () => {
-      const example = ExampleGenerator.generate('terra-sandbox:Placeholder');
+      const example = ExampleGenerator.generate({ name: 'terra-sandbox:Placeholder', type: 'element' });
 
       const expected = {
         id: 'mock-uuid',
-        name: 'terra-sandbox:Placeholder',
-        parent: undefined,
-        props: {},
         type: 'element',
+        value: {
+          name: 'terra-sandbox:Placeholder',
+          props: {
+            expand: {
+              type: 'bool',
+              value: undefined,
+            },
+          },
+        },
       };
 
       expect(example).toEqual(expected);
     });
 
-    it('should generate a placeholder example with a specified id', () => {
-      const example = ExampleGenerator.generate('terra-sandbox:Placeholder', 'mock');
-
-      const expected = {
-        id: 'mock',
-        name: 'terra-sandbox:Placeholder',
-        parent: undefined,
-        props: {},
-        type: 'element',
-      };
-
-      expect(example).toEqual(expected);
-    });
-
-    it('should generate a placeholder example with a specified id and parent', () => {
-      const example = ExampleGenerator.generate('terra-sandbox:Placeholder', 'mock', 'mock-parent');
-
-      const expected = {
-        id: 'mock',
-        name: 'terra-sandbox:Placeholder',
-        parent: 'mock-parent',
-        props: {},
-        type: 'element',
-      };
-
-      expect(example).toEqual(expected);
-    });
-
-    it('should generate a card example', () => {
-      const example = ExampleGenerator.generate('terra-sandbox:Mock');
+    it('should generate a mock example', () => {
+      const example = ExampleGenerator.generate({ name: 'terra-sandbox:Mock', type: 'element' });
 
       const expected = {
         id: 'mock-uuid',
-        name: 'terra-sandbox:Mock',
         type: 'element',
-        props: {
-          children: {
-            type: 'node',
-            value: {
-              'mock-uuid': {
-                id: 'mock-uuid',
-                parent: 'mock-uuid',
-                name: 'terra-sandbox:Placeholder',
-                type: 'element',
-                props: {},
+        value: {
+          name: 'terra-sandbox:Mock',
+          props: {
+            children: {
+              type: 'node',
+              value: {
+                'mock-uuid': {
+                  id: 'mock-uuid',
+                  parent: 'mock-uuid',
+                  type: 'element',
+                  value: {
+                    name: 'terra-sandbox:Placeholder',
+                    props: {
+                      expand: {
+                        type: 'bool',
+                        value: undefined,
+                      },
+                    },
+                  },
+                },
               },
             },
           },
@@ -120,7 +107,7 @@ describe('Example Generator', () => {
 
   describe('properties', () => {
     it('should generate each property', () => {
-      jest.spyOn(ExampleGenerator, 'property').mockImplementation((_id, property) => property);
+      jest.spyOn(ExampleGenerator, 'property').mockImplementation(({ property }) => property);
 
       const props = { prop1: {}, prop2: {} };
       const properties = ExampleGenerator.properties('mock-id', props);
@@ -134,7 +121,7 @@ describe('Example Generator', () => {
     it('should generate an element property', () => {
       jest.spyOn(ExampleGenerator, 'generate').mockImplementation(() => 'generated-component');
 
-      const property = ExampleGenerator.property('mock-id', { type: 'element' });
+      const property = ExampleGenerator.property({ id: 'mock-id', property: { type: 'element' } });
       const expected = 'generated-component';
 
       expect(property).toEqual(expected);
@@ -143,7 +130,7 @@ describe('Example Generator', () => {
     it('should generate a node property', () => {
       jest.spyOn(ExampleGenerator, 'generate').mockImplementation(() => ({ id: 'mock-id' }));
 
-      const property = ExampleGenerator.property('mock-id', { type: 'node' });
+      const property = ExampleGenerator.property({ id: 'mock-id', property: { type: 'node' } });
       const expected = { type: 'node', value: { 'mock-id': { id: 'mock-id' } } };
 
       expect(property).toEqual(expected);

@@ -10,12 +10,14 @@ describe('Workspace Generator', () => {
             placeholder: {
               id: 'placeholder',
               parent: 'root',
-              name: 'terra-sandbox:Placeholder',
               type: 'element',
-              props: {
-                expand: {
-                  type: 'bool',
-                  value: true,
+              value: {
+                name: 'terra-sandbox:Placeholder',
+                props: {
+                  expand: {
+                    type: 'bool',
+                    value: true,
+                  },
                 },
               },
             },

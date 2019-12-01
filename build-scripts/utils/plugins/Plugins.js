@@ -194,7 +194,6 @@ class Plugins {
     Object.keys(config).forEach((key) => {
       const component = config[key];
 
-      // eslint-disable-next-line object-curly-newline
       const { importFrom, packageName, name, parent } = component;
       const { name: parentName, importFrom: parentImport } = config[parent] || {};
 
