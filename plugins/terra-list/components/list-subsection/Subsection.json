@@ -1,7 +1,7 @@
 {
   "packageName": "terra-list",
   "name": "Subsection",
-  "version": "4.22.0",
+  "version": "4.23.0",
   "description": "",
   "documentation": "http://engineering.cerner.com/terra-ui/#/components/terra-list/list/list",
   "props": {
