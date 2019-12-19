@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const Component = require('../component/Component');
 const Format = require('../format/Format');
+const placeholder = require('../../../plugins/terra-sandbox/components/placeholder/Placeholder.json');
 
 const ROOT_DIR = process.cwd();
 const PLUGINS_DIR = `${ROOT_DIR}/plugins/`;
@@ -191,6 +192,7 @@ class Plugins {
    */
   static writeFiles(config) {
     const imports = new Set();
+
     Object.keys(config).forEach((key) => {
       const component = config[key];
 
@@ -207,8 +209,13 @@ class Plugins {
     const importMap = [...imports].map((key) => `  '${key}': () => import('${key}')`);
     const importsFile = `export default {\n${importMap.join(',\n')},\n};\n`;
 
+    // Add the custom terra-sandbox components.
+    // Must be added after the imports are generated to prevent cycle dependencies.
+    const mergedConfig = { ...config };
+    mergedConfig['terra-sandbox:Placeholder'] = placeholder;
+
     fs.writeFileSync(IMPORTS_FILE, importsFile);
-    Plugins.writeFile(PLUGINS_FILE, config, null);
+    Plugins.writeFile(PLUGINS_FILE, mergedConfig, null);
   }
 }
 

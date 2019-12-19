@@ -15,6 +15,19 @@ jest.mock('../../plugins/plugins', () => ({
       },
     },
   },
+  'terra-sandbox:Placeholder': {
+    packageName: 'terra-sandbox',
+    name: 'Placeholder',
+    props: {
+      expand: {
+        type: 'bool',
+        required: false,
+      },
+    },
+    key: 'terra-sandbox:Placeholder',
+    exportType: 'Default',
+    importFrom: 'Placeholder',
+  },
 }));
 
 describe('Replace', () => {

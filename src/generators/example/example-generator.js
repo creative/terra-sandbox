@@ -26,24 +26,11 @@ class ExampleGenerator {
    */
   static component(id, config) {
     const { name } = config;
-    const { props } = ExampleGenerator.configuration(name);
+    const { props } = plugins[name];
 
     const properties = ExampleGenerator.properties(id, props);
 
     return { name, props: properties };
-  }
-
-  /**
-   * Fetches the component configuration object.
-   * @param {string} name - The component name.
-   * @returns {Object} - The component configuration.
-   */
-  static configuration(name) {
-    if (name === 'terra-sandbox:Placeholder') {
-      return { props: { expand: { type: 'bool' } } };
-    }
-
-    return plugins[name];
   }
 
   /**
