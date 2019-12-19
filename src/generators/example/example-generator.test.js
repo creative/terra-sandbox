@@ -12,6 +12,19 @@ jest.mock('../../plugins/plugins', () => ({
       },
     },
   },
+  'terra-sandbox:Placeholder': {
+    packageName: 'terra-sandbox',
+    name: 'Placeholder',
+    props: {
+      expand: {
+        type: 'bool',
+        required: false,
+      },
+    },
+    key: 'terra-sandbox:Placeholder',
+    exportType: 'Default',
+    importFrom: 'Placeholder',
+  },
 }));
 
 describe('Example Generator', () => {
@@ -77,31 +90,6 @@ describe('Example Generator', () => {
       };
 
       expect(example).toEqual(expected);
-    });
-  });
-
-  describe('configuration', () => {
-    it('should return the placeholder configuration', () => {
-      const configuration = ExampleGenerator.configuration('terra-sandbox:Placeholder');
-      const expected = { props: { expand: { type: 'bool' } } };
-
-      expect(configuration).toEqual(expected);
-    });
-
-    it('should return the requested configuration', () => {
-      const configuration = ExampleGenerator.configuration('terra-sandbox:Mock');
-      const expected = {
-        packageName: 'terra-sandbox',
-        name: 'Mock',
-        version: '1.0.0',
-        props: {
-          children: {
-            type: 'node',
-          },
-        },
-      };
-
-      expect(configuration).toEqual(expected);
     });
   });
 
