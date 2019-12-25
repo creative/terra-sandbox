@@ -3,24 +3,19 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import Fiber from '../../react-fiber/react-fiber';
 import DispatchContext from '../../context/DispatchContext';
-import WorkspaceGenerator from '../../generators/workspace/workspace-generator';
 import styles from './Canvas.module.scss';
 
 const cx = classNames.bind(styles);
 
 const propTypes = {
   /**
-   * The in-progress workspace design.
+   * The children of the canvas.
    */
-  workspace: PropTypes.object.isRequired,
-  /**
-   * The available dynamic imports that have been loaded onto the page.
-   */
-  imports: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 const Canvas = (props) => {
-  const { imports, workspace } = props;
+  const { children } = props;
 
   const dispatch = useContext(DispatchContext);
 
@@ -47,7 +42,7 @@ const Canvas = (props) => {
   return (
     <div className={cx('canvas')}>
       <div className={cx('body')} data-terra-sandbox-root>
-        {WorkspaceGenerator.generate(imports, workspace)}
+        {children}
       </div>
     </div>
   );

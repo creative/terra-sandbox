@@ -12,17 +12,17 @@ const propTypes = {
    */
   selected: PropTypes.string,
   /**
-   * The in-progress workspace design.
+   * The in-progress canvas design.
    */
-  workspace: PropTypes.object.isRequired,
+  canvas: PropTypes.object.isRequired,
 };
 
 const Layers = (props) => {
-  const { selected, workspace } = props;
+  const { selected, canvas } = props;
 
   return (
     <div className={cx('layers')}>
-      <Tree workspace={workspace} selected={selected} />
+      <Tree canvas={canvas} selected={selected} />
     </div>
   );
 };

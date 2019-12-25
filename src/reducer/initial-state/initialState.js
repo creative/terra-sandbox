@@ -1,31 +1,14 @@
-import uuidv4 from 'uuid/v4';
+import Canvas from '../../components/canvas/Canvas';
 import Placeholder from '../../components/placeholder/Placeholder';
-
-const initialUUID = uuidv4();
+import ExampleGenerator from '../../generators/example/example-generator';
 
 const initialState = {
   imports: {
+    'terra-sandbox:Canvas': Canvas,
     'terra-sandbox:Placeholder': Placeholder,
   },
   selected: undefined,
-  workspace: {
-    root: {
-      [initialUUID]: {
-        id: initialUUID,
-        parent: 'root',
-        type: 'element',
-        value: {
-          name: 'terra-sandbox:Placeholder',
-          props: {
-            expand: {
-              type: 'bool',
-              value: true,
-            },
-          },
-        },
-      },
-    },
-  },
+  canvas: ExampleGenerator.generate({ type: 'element', name: 'terra-sandbox:Canvas' }),
 };
 
 export default initialState;

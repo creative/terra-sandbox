@@ -8,13 +8,12 @@ import ExampleGenerator from '../../generators/example/example-generator';
  * @param {Object} action - The dispatched action.
  */
 const replace = (state, action) => {
-  const { imports, workspace } = state;
-  const { root } = workspace;
+  const { imports, canvas } = state;
   const { id, replacement, dynamicImport } = action;
 
   // Preserve the existing ID for replacements.
   const component = ExampleGenerator.generate(replacement);
-  const tree = TreeParser.replace(root, id, component);
+  const tree = TreeParser.replace(canvas, id, component);
 
   // Replace actions may optionally introduce a new dynamic import.
   if (dynamicImport) {
@@ -24,7 +23,7 @@ const replace = (state, action) => {
     imports[importFrom] = dynamicImport;
   }
 
-  return { ...state, imports, workspace: tree };
+  return { ...state, imports, canvas: tree };
 };
 
 export default replace;

@@ -13,13 +13,13 @@ const propTypes = {
    */
   selected: PropTypes.string,
   /**
-   * The in-progress workspace design.
+   * The in-progress canvas design.
    */
-  workspace: PropTypes.object.isRequired,
+  canvas: PropTypes.object.isRequired,
 };
 
 const Sidebar = (props) => {
-  const { selected, workspace } = props;
+  const { selected, canvas } = props;
 
   const sidebar = useRef();
   const bottomSection = useRef();
@@ -110,7 +110,7 @@ const Sidebar = (props) => {
             <div className={cx('vertical-resizer')} onMouseDown={handleMouseDownVertical} role="presentation" />
             Layers
           </div>
-          <Layers selected={selected} workspace={workspace} />
+          <Layers selected={selected} canvas={canvas} />
         </div>
       </div>
       <div className={cx('horizontal-resizer')} onMouseDown={handleMouseDownHorizontal} role="presentation" />

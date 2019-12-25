@@ -3,8 +3,8 @@ import Base from 'terra-base';
 import classNames from 'classnames/bind';
 import Editor from '../editor/Editor';
 import Sidebar from '../sidebar/Sidebar';
-import Canvas from '../canvas/Canvas';
 import DispatchContext from '../../context/DispatchContext';
+import CanvasGenerator from '../../generators/canvas/canvas-generator';
 import reducer, { initialState } from '../../reducer/reducer';
 
 import styles from './Sandbox.module.scss';
@@ -13,7 +13,7 @@ const cx = classNames.bind(styles);
 
 const Sandbox = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { imports, selected, workspace } = state;
+  const { imports, selected, canvas } = state;
 
   return (
     <Base locale="en">
@@ -23,9 +23,9 @@ const Sandbox = () => {
         </div>
         <div className={cx('layout')}>
           <DispatchContext.Provider value={dispatch}>
-            <Sidebar selected={selected} workspace={workspace} />
-            <Canvas imports={imports} workspace={workspace} />
-            <Editor selected={selected} workspace={workspace} />
+            <Sidebar selected={selected} canvas={canvas} />
+            {CanvasGenerator.generate(imports, canvas)}
+            <Editor selected={selected} canvas={canvas} />
           </DispatchContext.Provider>
         </div>
       </div>

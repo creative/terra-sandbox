@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   /**
-   * The in-progress workspace design.
+   * The in-progress canvas design.
    */
-  workspace: PropTypes.object.isRequired,
+  canvas: PropTypes.object.isRequired,
 };
 
 const Tree = (props) => {
-  const { workspace } = props;
-  const { root } = workspace;
+  const { canvas } = props;
+  const { root } = canvas;
 
   const createTree = (node, depth = 0) => {
     const { id, value } = node;
@@ -36,8 +36,8 @@ const Tree = (props) => {
 
   return (
     <>
-      <div data-terra-sandbox-root>Workspace</div>
-      {Object.keys(root).map((key) => createTree(root[key], 1))}
+      <div data-terra-sandbox-root>canvas</div>
+      {/* {Object.keys(root).map((key) => createTree(root[key], 1))} */}
     </>
   );
 };

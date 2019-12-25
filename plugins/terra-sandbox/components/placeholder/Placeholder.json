@@ -9,5 +9,5 @@
   },
   "key": "terra-sandbox:Placeholder",
   "exportType": "Default",
-  "importFrom": "Placeholder"
+  "importFrom": "terra-sandbox:Placeholder"
 }

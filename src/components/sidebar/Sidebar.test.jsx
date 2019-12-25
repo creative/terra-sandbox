@@ -4,6 +4,6 @@ import Sidebar from './Sidebar';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<Sidebar workspace={{ root: {} }} />, div);
+  ReactDOM.render(<Sidebar canvas={{ root: {} }} />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const Component = require('../component/Component');
 const Format = require('../format/Format');
+const canvas = require('../../../plugins/terra-sandbox/components/canvas/Canvas.json');
 const placeholder = require('../../../plugins/terra-sandbox/components/placeholder/Placeholder.json');
 
 const ROOT_DIR = process.cwd();
@@ -211,11 +212,14 @@ class Plugins {
 
     // Add the custom terra-sandbox components.
     // Must be added after the imports are generated to prevent cycle dependencies.
-    const mergedConfig = { ...config };
-    mergedConfig['terra-sandbox:Placeholder'] = placeholder;
+
+    // eslint-disable-next-line no-param-reassign
+    config['terra-sandbox:Canvas'] = canvas;
+    // eslint-disable-next-line no-param-reassign
+    config['terra-sandbox:Placeholder'] = placeholder;
 
     fs.writeFileSync(IMPORTS_FILE, importsFile);
-    Plugins.writeFile(PLUGINS_FILE, mergedConfig, null);
+    Plugins.writeFile(PLUGINS_FILE, config, null);
   }
 }
 
