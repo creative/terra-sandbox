@@ -24,7 +24,9 @@ const Workspace = () => {
         <div className={cx('layout')}>
           <DispatchContext.Provider value={dispatch}>
             <Sidebar selected={selected} canvas={canvas} />
-            {CanvasGenerator.generate(imports, canvas)}
+            <div className={cx('canvas')}>
+              {CanvasGenerator.generate(imports, canvas)}
+            </div>
             <Editor selected={selected} canvas={canvas} />
           </DispatchContext.Provider>
         </div>

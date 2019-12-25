@@ -19,10 +19,11 @@ const propTypes = {
 
 const Layers = (props) => {
   const { selected, canvas } = props;
+  const { id } = canvas;
 
   return (
     <div className={cx('layers')}>
-      <Tree node={canvas} selected={selected} />
+      <Tree key={id} node={canvas} selected={selected} />
     </div>
   );
 };

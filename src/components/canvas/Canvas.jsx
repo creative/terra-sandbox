@@ -41,9 +41,7 @@ const Canvas = (props) => {
 
   return (
     <div className={cx('canvas')}>
-      <div className={cx('body')}>
-        {children}
-      </div>
+      {children}
     </div>
   );
 };
