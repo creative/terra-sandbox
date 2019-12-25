@@ -22,7 +22,7 @@ const Layers = (props) => {
 
   return (
     <div className={cx('layers')}>
-      <Tree canvas={canvas} selected={selected} />
+      <Tree node={canvas} selected={selected} />
     </div>
   );
 };

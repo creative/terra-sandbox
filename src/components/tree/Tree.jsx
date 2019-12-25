@@ -1,47 +1,63 @@
+/* eslint-disable react/forbid-dom-props */
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames/bind';
+import plugins from '../../plugins/plugins';
+import styles from './Tree.module.scss';
+
+const cx = classNames.bind(styles);
 
 const propTypes = {
   /**
-   * The in-progress canvas design.
+   * The node to generate.
    */
-  canvas: PropTypes.object.isRequired,
+  node: PropTypes.object.isRequired,
+  /**
+   * The depth of the node.
+   */
+  depth: PropTypes.number,
+};
+
+const defaultProps = {
+  depth: 0,
 };
 
 const Tree = (props) => {
-  const { canvas } = props;
-  const { root } = canvas;
+  const { node, depth } = props;
+  const { value } = node;
+  const { name, props: properties } = value;
 
-  const createTree = (node, depth = 0) => {
-    const { id, value } = node;
-    const { props: properties, name } = value;
+  const children = [];
+  const displayName = plugins[name].name;
+  const style = { paddingLeft: `${depth * 15}px` };
 
-    // eslint-disable-next-line react/forbid-dom-props
-    const nodes = [<div key={id} style={{ paddingLeft: `${depth * 15}px` }}>{name.split(':').pop()}</div>];
+  Object.keys(properties).forEach((property) => {
+    const { id, type, value: propertyValue } = properties[property];
 
-    Object.keys(properties).forEach((property) => {
-      const { type, value: propertyValue } = properties[property];
+    if (type === 'node') {
+      children.push(Object.keys(propertyValue).map((key) => (
+        <Tree key={id} node={propertyValue[key]} depth={depth + 1} />
+      )));
+    }
 
-      if (type === 'node') {
-        nodes.push(Object.keys(propertyValue).map((key) => createTree(propertyValue[key], depth + 1)));
-      }
-
-      if (type === 'element') {
-        nodes.push(createTree(properties[property], depth + 1));
-      }
-    });
-
-    return nodes;
-  };
+    if (type === 'element') {
+      children.push(<Tree key={id} node={properties[property]} depth={depth + 1} />);
+    }
+  });
 
   return (
-    <>
-      <div data-terra-sandbox-root>canvas</div>
-      {/* {Object.keys(root).map((key) => createTree(root[key], 1))} */}
-    </>
+    <ul className={cx('tree')}>
+      <li>
+        <div style={style}>
+          {displayName}
+        </div>
+        {children.length > 0 && <ul className={cx('children')}>{children}</ul>}
+      </li>
+    </ul>
   );
 };
 
 Tree.propTypes = propTypes;
+Tree.defaultProps = defaultProps;
 
 export default Tree;

@@ -41,7 +41,7 @@ const Canvas = (props) => {
 
   return (
     <div className={cx('canvas')}>
-      <div className={cx('body')} data-terra-sandbox-root>
+      <div className={cx('body')}>
         {children}
       </div>
     </div>

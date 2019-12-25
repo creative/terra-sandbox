@@ -7,17 +7,17 @@ import DispatchContext from '../../context/DispatchContext';
 import CanvasGenerator from '../../generators/canvas/canvas-generator';
 import reducer, { initialState } from '../../reducer/reducer';
 
-import styles from './Sandbox.module.scss';
+import styles from './Workspace.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Sandbox = () => {
+const Workspace = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { imports, selected, canvas } = state;
 
   return (
     <Base locale="en">
-      <div className={cx('sandbox')}>
+      <div className={cx('workspace')}>
         <div className={cx('header')}>
           Header
         </div>
@@ -33,4 +33,4 @@ const Sandbox = () => {
   );
 };
 
-export default Sandbox;
+export default Workspace;

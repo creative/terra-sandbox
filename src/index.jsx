@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Sandbox from './components/sandbox/Sandbox';
+import Workspace from './components/workspace/Workspace';
 
-ReactDOM.render(<Sandbox />, document.getElementById('root'));
+ReactDOM.render(<Workspace />, document.getElementById('root'));
