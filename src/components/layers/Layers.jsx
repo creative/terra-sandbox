@@ -23,6 +23,9 @@ const Layers = (props) => {
 
   return (
     <div className={cx('layers')}>
+      <div>
+        Layers
+      </div>
       <Tree key={id} node={canvas} selected={selected} />
     </div>
   );

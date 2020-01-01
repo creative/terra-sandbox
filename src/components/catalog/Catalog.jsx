@@ -33,6 +33,9 @@ const Catalog = () => {
 
   return (
     <div className={cx('catalog')}>
+      <div className={cx('header')}>
+        Catalog
+      </div>
       <input
         className={cx('input')}
         onChange={handleChange}

@@ -2,8 +2,6 @@
   .sidebar {
     border-bottom: 3px dashed #787575;
     border-left: 3px dashed #787575;
-    display: flex;
-    flex-shrink: 0;
     height: 100%;
     max-width: 75%;
     min-width: 100px;
@@ -13,29 +11,20 @@
   }
 
   .content {
-    display: flex;
-    flex-direction: column;
+    display: inline-block;
     height: 100%;
     overflow: hidden;
-    width: 100%;
+    width: calc(100% - 3px);
   }
 
   .top-section {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    flex-shrink: 1;
+    height: 60%;
     min-height: 0;
     overflow: hidden;
   }
 
-  .header {
-    flex: 0 0 auto;
-  }
-
   .bottom-section {
-    flex-shrink: 0;
-    height: 40%;
+    height: calc(40% - 3px); // The 3px is the horizontal resizer offset.
     min-height: 36px;
     overflow: hidden;
   }
@@ -43,6 +32,7 @@
   .horizontal-resizer {
     background-color: #787575;
     cursor: ew-resize;
+    display: inline-block;
     height: 100%;
     width: 3px;
   }

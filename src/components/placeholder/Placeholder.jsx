@@ -13,14 +13,10 @@ const propTypes = {
    * The placeholder identifier.
    */
   id: PropTypes.string.isRequired,
-  /**
-   * Whether or not the placeholder should expand to fill the available space.
-   */
-  expand: PropTypes.bool,
 };
 
 const Placeholder = (props) => {
-  const { id, expand } = props;
+  const { id } = props;
   const [dropped, setDropped] = useState('Drop Zone');
 
   const dispatch = useContext(DispatchContext);
@@ -67,7 +63,7 @@ const Placeholder = (props) => {
   return (
     <div
       id={id}
-      className={cx('placeholder', { expand })}
+      className={cx('placeholder')}
       onDragOver={handleDragover}
       onDragEnter={handleDragenter}
       onDrop={handleDrop}

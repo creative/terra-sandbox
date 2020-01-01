@@ -51,7 +51,11 @@ const Tree = (props) => {
         <div style={style}>
           {displayName}
         </div>
-        {children.length > 0 && <ul className={cx('children')}>{children}</ul>}
+        {children.length > 0 && (
+          <ul className={cx('children')}>
+            {children}
+          </ul>
+        )}
       </li>
     </ul>
   );
