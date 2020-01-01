@@ -32,7 +32,7 @@
   .horizontal-resizer {
     background-color: #787575;
     cursor: ew-resize;
-    display: inline-block;
+    float: right;
     height: 100%;
     width: 3px;
   }
