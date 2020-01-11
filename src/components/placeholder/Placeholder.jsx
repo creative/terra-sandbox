@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import DispatchContext from '../../context/DispatchContext';
+import ExampleGenerator from '../../generators/example/example-generator';
 import plugins from '../../plugins/plugins';
 import imports from '../../plugins/imports';
 import styles from './Placeholder.module.scss';
@@ -49,7 +50,7 @@ const Placeholder = (props) => {
       const { importFrom } = plugins[identifier];
 
       imports[importFrom]().then((dynamicImport) => {
-        const replacement = { name: identifier, type: 'element' };
+        const replacement = ExampleGenerator.generate({ name: identifier, type: 'element' });
 
         dispatch({ id, dynamicImport, replacement, type: 'replace' });
       }).catch((error) => {
