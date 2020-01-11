@@ -1,7 +1,7 @@
 class TreeParser {
   /**
-   * Replaces a target node within the tree.
-   * @param {Object} node - The current node within the tree.
+   * Replaces a node.
+   * @param {Object} node - A node.
    * @param {string} target - The target identifier.
    * @param {Object} replacement - The replacement node.
    */
@@ -24,8 +24,8 @@ class TreeParser {
   }
 
   /**
-   * Replaces an element node within a tree.
-   * @param {Object} node - The element node.
+   * Iterates through the element node props and replaces the target.
+   * @param {Object} node - The node.
    * @param {string} target - The target identifier.
    * @param {Object} replacement - The replacement node.
    */
@@ -43,8 +43,8 @@ class TreeParser {
   }
 
   /**
-   * Replaces a node node within a tree.
-   * @param {Object} node - The element node.
+   * Iterates through the node keys and replaces the target.
+   * @param {Object} node - The node.
    * @param {string} target - The target identifier.
    * @param {Object} replacement - The replacement node.
    */
@@ -54,7 +54,9 @@ class TreeParser {
     const nodes = {};
 
     Object.keys(value).forEach((key) => {
-      nodes[key] = TreeParser.replace(value[key], target, replacement);
+      const replacementNode = TreeParser.replace(value[key], target, replacement);
+
+      nodes[replacementNode.id] = replacementNode;
     });
 
     return { id, parent, type, value: nodes };
