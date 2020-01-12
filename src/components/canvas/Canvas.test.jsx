@@ -7,7 +7,7 @@ jest.mock('../../generators/canvas/canvas-generator');
 describe('Canvas', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Canvas canvas={{}} imports={{}} />, div);
+    ReactDOM.render(<Canvas><div /></Canvas>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });
