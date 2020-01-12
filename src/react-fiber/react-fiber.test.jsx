@@ -21,15 +21,6 @@ describe('React Fiber', () => {
       expect(key).toEqual(mockKey);
     });
 
-    it('should return root if root the starting node', () => {
-      const { getByText } = render(<div data-terra-sandbox-root>Workspace</div>);
-
-      const start = getByText('Workspace');
-      const key = Fiber.findNearest(start);
-
-      expect(key).toEqual('root');
-    });
-
     it('should return null if no valid component is available in the ancestor tree', () => {
       const { getByText } = render(<div>Mock</div>);
 
@@ -78,6 +69,13 @@ describe('React Fiber', () => {
       const fiberNode = Fiber.fiberNode(node);
 
       expect(fiberNode.stateNode).toBeDefined();
+    });
+
+    it('should return null if the node is not bound to the react fiber tree', () => {
+      const element = document.createElement('div');
+      const fiberNode = Fiber.fiberNode(element);
+
+      expect(fiberNode).toBeNull();
     });
   });
 });
