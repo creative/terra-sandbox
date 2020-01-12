@@ -26,4 +26,12 @@ describe('Tree Parser', () => {
       expect(tree).toEqual(expected1);
     });
   });
+
+  describe('find', () => {
+    it('should find a node within the canvas tree', () => {
+      const target = TreeParser.find(mockCanvas, '6acb405b-77bf-4a71-9371-e7b366f1edf0');
+
+      expect(target).toBeDefined();
+    });
+  });
 });
