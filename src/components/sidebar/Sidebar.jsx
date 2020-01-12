@@ -13,16 +13,18 @@ const propTypes = {
    */
   selected: PropTypes.string,
   /**
-   * The in-progress workspace design.
+   * The in-progress canvas design.
    */
-  workspace: PropTypes.object.isRequired,
+  canvas: PropTypes.object.isRequired,
 };
 
 const Sidebar = (props) => {
-  const { selected, workspace } = props;
+  const { selected, canvas } = props;
 
   const sidebar = useRef();
+  const topSection = useRef();
   const bottomSection = useRef();
+  const verticalResizer = useRef();
 
   /**
    * Modifies the sidebar width as the mouse moves horizontally.
@@ -39,7 +41,15 @@ const Sidebar = (props) => {
    * @param {event} event - The mouse move event.
    */
   const handleMouseMoveVertical = (event) => {
-    bottomSection.current.style.height = `${window.innerHeight - event.clientY}px`;
+    const resizerHeight = verticalResizer.current.clientHeight;
+    const sidebarHeight = sidebar.current.clientHeight;
+
+    const height = event.clientY - sidebar.current.offsetTop;
+    const topSectionHeight = Math.max(0, Math.min(sidebarHeight - resizerHeight, height));
+    const bottomSectionHeight = Math.max(0, Math.min(sidebarHeight, sidebarHeight - topSectionHeight - resizerHeight));
+
+    topSection.current.style.height = `${topSectionHeight}px`;
+    bottomSection.current.style.height = `${bottomSectionHeight}px`;
   };
 
   /**
@@ -99,18 +109,12 @@ const Sidebar = (props) => {
     // eslint-disable-next-line react/forbid-dom-props
     <div className={cx('sidebar')} ref={sidebar}>
       <div className={cx('content')}>
-        <div className={cx('top-section')}>
-          <div className={cx('header')}>
-            Component
-          </div>
+        <div className={cx('top-section')} ref={topSection}>
           <Catalog />
         </div>
+        <div className={cx('vertical-resizer')} onMouseDown={handleMouseDownVertical} role="presentation" ref={verticalResizer} />
         <div className={(cx('bottom-section'))} ref={bottomSection}>
-          <div className={cx('header')}>
-            <div className={cx('vertical-resizer')} onMouseDown={handleMouseDownVertical} role="presentation" />
-            Layers
-          </div>
-          <Layers selected={selected} workspace={workspace} />
+          <Layers selected={selected} canvas={canvas} />
         </div>
       </div>
       <div className={cx('horizontal-resizer')} onMouseDown={handleMouseDownHorizontal} role="presentation" />

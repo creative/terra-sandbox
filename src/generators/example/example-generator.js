@@ -3,80 +3,53 @@ import plugins from '../../plugins/plugins';
 
 class ExampleGenerator {
   /**
-   * Generates an example.
+   * Generates an example object for a provided configuration.
    * @param {Object} config - The example configuration.
    * @returns {Object} - A generated example.
    */
   static generate(config) {
     const { type, parent } = config;
 
+    let value;
     const id = uuidv4();
 
     if (type === 'element') {
-      return { id, parent, type, value: ExampleGenerator.component(id, config) };
+      value = ExampleGenerator.element({ ...config, id });
+    } else if (type === 'node') {
+      value = ExampleGenerator.node({ ...config, id });
     }
 
-    return { id, parent, type, value: undefined };
+    return { id, parent, type, value };
   }
 
   /**
-   * Generates an example component.
-   * @param {string} id - The example identifier.
+   * Generates an example object representation of a react element.
    * @param {Object} config - The example configuration.
+   * @returns {Object} - An Object representation of a react element.
    */
-  static component(id, config) {
-    const { name } = config;
+  static element(config) {
+    const { id, name = 'terra-sandbox:Placeholder' } = config;
     const { props } = plugins[name];
 
-    const properties = ExampleGenerator.properties(id, props);
+    const properties = {};
+
+    Object.keys(props).forEach((property) => {
+      properties[property] = ExampleGenerator.generate({ ...props[property], parent: id });
+    });
 
     return { name, props: properties };
   }
 
   /**
-   * Generates example component properties.
-   * @param {string} id - The component identifier.
-   * @param {Object} properties - The component property configurations.
-   * @returns {Object} - The component properties.
+   * Generates an example object representation for a node datatype.
+   * @param {Object} config - The example configuration.
+   * @returns {Object} - An Object representation of the node.
    */
-  static properties(id, properties) {
-    const props = {};
+  static node(config) {
+    const { id } = config;
+    const placeholder = ExampleGenerator.generate({ parent: id, type: 'element' });
 
-    Object.keys(properties).forEach((property) => {
-      props[property] = ExampleGenerator.property({ id, property: properties[property] });
-    });
-
-    return props;
-  }
-
-  /**
-   * Generates an example property.
-   * @param {Object} config - The property configuration.
-   * @returns {Object} - A generated property.
-   */
-  static property(config) {
-    const { id, property } = config;
-    const { type } = property;
-
-    if (type === 'element') {
-      return ExampleGenerator.placeholder(id);
-    }
-
-    if (type === 'node') {
-      const example = ExampleGenerator.placeholder(id);
-
-      return { type, value: { [example.id]: example } };
-    }
-
-    return { type, value: undefined };
-  }
-
-  /**
-   * Creates a placeholder.
-   * @param {string} parent - The parent identifier.
-   */
-  static placeholder(parent) {
-    return ExampleGenerator.generate({ name: 'terra-sandbox:Placeholder', type: 'element', parent });
+    return { [placeholder.id]: placeholder };
   }
 }
 

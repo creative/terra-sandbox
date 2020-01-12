@@ -1,0 +1,30 @@
+{
+  "id": "d498a0cd-5eef-4000-b489-3a6f45e0739a",
+  "type": "element",
+  "value": {
+    "name": "terra-sandbox:MockReplacement",
+    "props": {
+      "mockProp1": {
+        "id": "61ba03e0-9f63-4a80-932b-81fe53e7c4d9",
+        "parent": "d498a0cd-5eef-4000-b489-3a6f45e0739a",
+        "type": "node",
+        "value": {
+          "f8c8dd02-bece-46a1-bf6c-5ed7502fa8b8": {
+            "id": "f8c8dd02-bece-46a1-bf6c-5ed7502fa8b8",
+            "parent": "61ba03e0-9f63-4a80-932b-81fe53e7c4d9",
+            "type": "element",
+            "value": {
+              "name": "terra-sandbox:Placeholder",
+              "props": {}
+            }
+          }
+        }
+      },
+      "mockProp2": {
+        "id": "1d792281-4b61-41ec-8890-20ffa8c2902c",
+        "parent": "d498a0cd-5eef-4000-b489-3a6f45e0739a",
+        "type": "string"
+      }
+    }
+  }
+}

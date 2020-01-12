@@ -1,13 +1,9 @@
 {
+  "hidden": true,
   "packageName": "terra-sandbox",
   "name": "Placeholder",
-  "props": {
-    "expand": {
-      "type": "bool",
-      "required": false
-    }
-  },
+  "props": {},
   "key": "terra-sandbox:Placeholder",
   "exportType": "Default",
-  "importFrom": "Placeholder"
+  "importFrom": "terra-sandbox:Placeholder"
 }

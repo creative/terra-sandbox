@@ -2,12 +2,10 @@
   .placeholder {
     border: 3px dashed #787575;
     border-radius: 3px;
-    margin: auto;
-    user-select: none;
-  }
-
-  .expand {
     height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     width: 100%;
   }
 }

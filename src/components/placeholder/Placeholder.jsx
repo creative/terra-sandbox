@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import DispatchContext from '../../context/DispatchContext';
+import ExampleGenerator from '../../generators/example/example-generator';
 import plugins from '../../plugins/plugins';
 import imports from '../../plugins/imports';
 import styles from './Placeholder.module.scss';
@@ -13,14 +14,10 @@ const propTypes = {
    * The placeholder identifier.
    */
   id: PropTypes.string.isRequired,
-  /**
-   * Whether or not the placeholder should expand to fill the available space.
-   */
-  expand: PropTypes.bool,
 };
 
 const Placeholder = (props) => {
-  const { id, expand } = props;
+  const { id } = props;
   const [dropped, setDropped] = useState('Drop Zone');
 
   const dispatch = useContext(DispatchContext);
@@ -53,7 +50,7 @@ const Placeholder = (props) => {
       const { importFrom } = plugins[identifier];
 
       imports[importFrom]().then((dynamicImport) => {
-        const replacement = { name: identifier, type: 'element' };
+        const replacement = ExampleGenerator.generate({ name: identifier, type: 'element' });
 
         dispatch({ id, dynamicImport, replacement, type: 'replace' });
       }).catch((error) => {
@@ -67,7 +64,7 @@ const Placeholder = (props) => {
   return (
     <div
       id={id}
-      className={cx('placeholder', { expand })}
+      className={cx('placeholder')}
       onDragOver={handleDragover}
       onDragEnter={handleDragenter}
       onDrop={handleDrop}

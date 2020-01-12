@@ -1,0 +1,14 @@
+{
+  "hidden": true,
+  "packageName": "terra-sandbox",
+  "name": "Canvas",
+  "props": {
+    "children": {
+      "type": "node",
+      "required": false
+    }
+  },
+  "key": "terra-sandbox:Canvas",
+  "exportType": "Default",
+  "importFrom": "terra-sandbox:Canvas"
+}

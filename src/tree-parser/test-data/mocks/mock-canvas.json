@@ -1,0 +1,114 @@
+{
+  "id": "06b53486-f6f7-4edc-afe9-37719e163a0b",
+  "type": "element",
+  "value": {
+    "name": "terra-sandbox:Canvas",
+    "props": {
+      "children": {
+        "id": "08521c74-42ca-46ab-ade0-5bc3d30c2f7a",
+        "parent": "06b53486-f6f7-4edc-afe9-37719e163a0b",
+        "type": "node",
+        "value": {
+          "6ddda20e-be21-4d20-bd58-cc8fb0ca01d2": {
+            "id": "6ddda20e-be21-4d20-bd58-cc8fb0ca01d2",
+            "parent": "08521c74-42ca-46ab-ade0-5bc3d30c2f7a",
+            "type": "element",
+            "value": {
+              "name": "terra-sandbox:MockComponent",
+              "props": {
+                "mockProp1": {
+                  "id": "e48abf95-2101-4c58-8968-55b6154dad41",
+                  "parent": "6ddda20e-be21-4d20-bd58-cc8fb0ca01d2",
+                  "type": "node",
+                  "value": {
+                    "a3f27357-d0c3-4c50-96a4-1d65c564b959": {
+                      "id": "a3f27357-d0c3-4c50-96a4-1d65c564b959",
+                      "parent": "e48abf95-2101-4c58-8968-55b6154dad41",
+                      "type": "element",
+                      "value": {
+                        "name": "terra-sandbox:Placeholder",
+                        "props": {}
+                      }
+                    }
+                  }
+                },
+                "mockProp2": {
+                  "id": "35b93807-60be-44ad-ac0d-856d1c42a5b5",
+                  "parent": "6ddda20e-be21-4d20-bd58-cc8fb0ca01d2",
+                  "type": "node",
+                  "value": {
+                    "77472358-5af8-4a7f-ac03-446e004e08a7": {
+                      "id": "77472358-5af8-4a7f-ac03-446e004e08a7",
+                      "parent": "35b93807-60be-44ad-ac0d-856d1c42a5b5",
+                      "type": "element",
+                      "value": {
+                        "name": "terra-sandbox:Placeholder",
+                        "props": {}
+                      }
+                    }
+                  }
+                },
+                "mockProp3": {
+                  "id": "4387abed-731d-4bfe-a016-8a81c5d35f31",
+                  "parent": "6ddda20e-be21-4d20-bd58-cc8fb0ca01d2",
+                  "type": "node",
+                  "value": {
+                    "2f8dc573-6d26-4ead-bd48-7bf4e782d7f2": {
+                      "id": "2f8dc573-6d26-4ead-bd48-7bf4e782d7f2",
+                      "parent": "4387abed-731d-4bfe-a016-8a81c5d35f31",
+                      "type": "element",
+                      "value": {
+                        "name": "terra-sandbox:MockComponent",
+                        "props": {
+                          "mockProp1": {
+                            "id": "24292176-b7ad-45a1-a3d5-8906a19dc651",
+                            "parent": "2f8dc573-6d26-4ead-bd48-7bf4e782d7f2",
+                            "type": "string"
+                          },
+                          "mockProp2": {
+                            "id": "6acb405b-77bf-4a71-9371-e7b366f1edf0",
+                            "parent": "2f8dc573-6d26-4ead-bd48-7bf4e782d7f2",
+                            "type": "element",
+                            "value": {
+                              "name": "terra-sandbox:Placeholder",
+                              "props": {}
+                            }
+                          },
+                          "mockProp3": {
+                            "id": "68c62f26-37b1-4235-9f3d-890d418bf6ad",
+                            "parent": "2f8dc573-6d26-4ead-bd48-7bf4e782d7f2",
+                            "type": "bool"
+                          },
+                          "mockProp4": {
+                            "id": "64e5760e-b53e-471c-9a59-69a6d80b9fc6",
+                            "parent": "2f8dc573-6d26-4ead-bd48-7bf4e782d7f2",
+                            "type": "func"
+                          },
+                          "mockProp5": {
+                            "id": "99f87207-8707-4bbe-8ffb-e149741771ec",
+                            "parent": "2f8dc573-6d26-4ead-bd48-7bf4e782d7f2",
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "mockProp4": {
+                  "id": "c1c014cb-2596-477a-a0a7-b23f5b6a5903",
+                  "parent": "6ddda20e-be21-4d20-bd58-cc8fb0ca01d2",
+                  "type": "bool"
+                },
+                "mockProp5": {
+                  "id": "ecaf157c-dc62-4dca-9be2-d87af3910e90",
+                  "parent": "6ddda20e-be21-4d20-bd58-cc8fb0ca01d2",
+                  "type": "func"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
