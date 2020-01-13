@@ -36,7 +36,7 @@ const Tree = (props) => {
 
     if (type === 'node') {
       children.push(Object.keys(propertyValue).map((key) => (
-        <Tree key={id} node={propertyValue[key]} depth={depth + 1} />
+        <Tree key={key} node={propertyValue[key]} depth={depth + 1} />
       )));
     }
 
