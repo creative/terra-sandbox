@@ -1,7 +1,7 @@
 {
   "packageName": "terra-button",
   "name": "Button",
-  "version": "3.30.0",
+  "version": "3.31.0",
   "description": "",
   "documentation": "http://engineering.cerner.com/terra-ui/#/components/terra-button/button/button",
   "props": {
