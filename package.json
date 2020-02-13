@@ -37,7 +37,8 @@
     "parser": "babel-eslint",
     "rules": {
       "react/forbid-prop-types": "off",
-      "object-curly-newline": "off"
+      "object-curly-newline": "off",
+      "import/extensions": "off"
     }
   },
   "stylelint": {
