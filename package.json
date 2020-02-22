@@ -52,7 +52,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-intl": "^2.8.0",
-    "react-scripts": "3.3.1",
+    "react-scripts": "3.4.0",
     "terra-base": "^5.11.0",
     "terra-button": "^3.26.0",
     "terra-card": "^3.12.0",

@@ -1,7 +1,7 @@
 {
   "packageName": "terra-card",
   "name": "Body",
-  "version": "3.24.0",
+  "version": "3.25.0",
   "description": "",
   "documentation": "http://engineering.cerner.com/terra-ui/#/components/terra-card/card/card",
   "props": {
